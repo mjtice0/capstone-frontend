@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-// import {
-//   GoogleMap,
-//   useLoadScript,
-//   Marker,
-//   InforWindow,
-// } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InforWindow,
+} from "@react-google-maps/api";
 import "./App.css";
 import axios from "axios";
 
 function App() {
-  // run on component initialization
+//Run on component initialization. Backend connection working. 
   useEffect(() => {
     runAxios();
   }, []);
