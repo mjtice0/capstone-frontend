@@ -1,22 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+// import {
+//   GoogleMap,
+//   useLoadScript,
+//   Marker,
+//   InforWindow,
+// } from "@react-google-maps/api";
+import "./App.css";
+import axios from "axios";
 
 function App() {
+  // run on component initialization
+  useEffect(() => {
+    runAxios();
+  }, []);
+  async function runAxios() {
+    console.log("runAxios()");
+    axios.get("http://localhost:8800/api/users").then((response) => {
+      console.log(response.data);
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>hello</p>
       </header>
     </div>
   );
