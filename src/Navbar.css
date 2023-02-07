@@ -1,0 +1,32 @@
+
+
+.navbar {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(229, 202, 162);
+}
+
+.site-heading {
+    color: black;
+    font-size: 24px;
+}
+
+li {
+    list-style: none;
+    float: left;
+}
+
+li a { 
+    display: block;
+    padding: 8px 15px;
+    color: black;
+
+}
+
+a:link { text-decoration: none; }
+
+a:hover { 
+    color: blue; 
+    background-color: yellow;}

@@ -7,11 +7,13 @@ import React, { useState, useEffect } from "react";
 // } from "@react-google-maps/api";
 import "./App.css";
 import axios from "axios";
+import CreateNewReview from "./components/Reviews";
 import Login from "./components/Login";
 import About from "./components/About";
 import Home from "./components/Home";
 import Navbar from "./Navbar";
 import { Route, Routes } from "react-router-dom";
+
 
 function App() {
   //Run on component initialization. Connect to backend --working
@@ -35,6 +37,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
+      <CreateNewReview />
     </>
   );
 }
