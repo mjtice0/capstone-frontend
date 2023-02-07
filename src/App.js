@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import {
-//   GoogleMap,
-//   useLoadScript,
-//   Marker,
-//   InforWindow,
-// } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InforWindow,
+} from "@react-google-maps/api";
 import "./App.css";
 import axios from "axios";
 import CreateNewReview from "./components/Reviews";
@@ -13,6 +13,7 @@ import About from "./components/About";
 import Home from "./components/Home";
 import Navbar from "./Navbar";
 import { Route, Routes } from "react-router-dom";
+import Places from "./components/Places";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
+      <Places />
       <CreateNewReview />
     </>
   );
