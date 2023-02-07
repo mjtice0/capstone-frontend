@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 // } from "@react-google-maps/api";
 import "./App.css";
 import axios from "axios";
-import Review from "./components/Review";
+import Login from "./components/Login";
 import About from "./components/About";
 import Home from "./components/Home";
 import Navbar from "./Navbar";
@@ -28,9 +28,11 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="contaner">
+      <div className="Nav-Container">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </>
