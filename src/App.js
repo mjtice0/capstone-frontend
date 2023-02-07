@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InforWindow,
-} from "@react-google-maps/api";
+// import {
+//   GoogleMap,
+//   useLoadScript,
+//   Marker,
+//   InforWindow,
+// } from "@react-google-maps/api";
 import "./App.css";
 import axios from "axios";
+import Review from "./components/Review";
+import About from "./components/About";
+import Home from "./components/Home";
+import Navbar from "./Navbar";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-//Run on component initialization. Backend connection working. 
+  //Run on component initialization. Connect to backend --working
   useEffect(() => {
     runAxios();
   }, []);
@@ -21,11 +26,14 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>hello</p>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div className="contaner">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
