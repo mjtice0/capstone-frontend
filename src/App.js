@@ -13,7 +13,7 @@ import About from "./components/About";
 import Home from "./components/Home";
 import Navbar from "./Navbar";
 import { Route, Routes } from "react-router-dom";
-import Places from "./components/Places";
+import Map from "./components/Map";
 
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
-      <Places />
+      <Map />
       <CreateNewReview />
     </>
   );
