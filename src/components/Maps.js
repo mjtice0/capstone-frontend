@@ -20,6 +20,8 @@ export default function Maps () {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API, libraries,
   });
 
+  const [pins, setPins] = useState([]);
+
   if (!isLoaded) return "Loading Maps";
   // return <Map />
 
@@ -31,7 +33,16 @@ export default function Maps () {
   return (
   
     <div>
-      <GoogleMap zoom={12} center={center} mapContainerStyle={mapContainerStyle}
+      <GoogleMap 
+        zoom={12} 
+        center={center} 
+        mapContainerStyle={mapContainerStyle}
+        onClick={(event) => {
+          setPins(current => [...current, {
+            lat: event.latLng.lat(),
+            lng: event.latLng.lng(),
+          }])
+        }}
       >
       </GoogleMap>
     </div>
