@@ -13,7 +13,7 @@ import About from "./components/About";
 import Home from "./components/Home";
 import Navbar from "./Navbar";
 import { Route, Routes } from "react-router-dom";
-import Map from "./components/Map";
+import Maps from "./components/Maps";
 
 
 function App() {
@@ -31,14 +31,14 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="Nav-Container">
+      {/* <div className="Nav-Container">
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-      </div>
-      <Map />
+      </div> */}
+      <Maps />
       <CreateNewReview />
     </>
   );
