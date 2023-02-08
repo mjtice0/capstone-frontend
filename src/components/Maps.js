@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { useState } from "react";
+import { GoogleMap, useLoadScript, Marker, StandaloneSearchBox } from "@react-google-maps/api";
 // import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-paces-autocomplete";
 
 //three props to google map, zoom, center (lat and long), style for container (in div)
@@ -12,16 +12,22 @@ const mapContainerStyle = {
   width: "65vw",
   height: "60vh",
 };
-const center = 
-{ lat: 43.45, lng: -80.49};
+const center = { lat: 43.45, lng: -80.49};
 
 export default function Maps () {
+  
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API, libraries,
   });
 
   const [pins, setPins] = useState([]);
+  const [searchBox, setSearchBox] = useState(null);
 
+  const onPlaceChange = () => console.log(searchBox.getPlaces())
+  const onSearchBoxLoad = ref => {
+    setSearchBox(ref);
+  }
+  
   if (!isLoaded) return "Loading Maps";
   // return <Map />
 
@@ -31,7 +37,6 @@ export default function Maps () {
 //   const [selected, setSelected] = useState(null);
   
   return (
-  
     <div>
       <GoogleMap 
         zoom={12} 
@@ -44,6 +49,30 @@ export default function Maps () {
           }])
         }}
       >
+        <>
+          <StandaloneSearchBox
+          onPlaceChange={onPlaceChange}
+          onLoad={onSearchBoxLoad}
+          >
+            <input type="text"
+            placeholder="Search for Place (e.g. restaurant)"
+            style={{
+              boxSizing:'border-box',
+              border: `2px solid green`,
+              width: `270px`,
+              height: `38px`,
+              borderRadius: `3px`,
+              fontSize: `16px`,
+              outline: `none`,
+              margin: 'center',
+              textOverflow: `ellipses`,
+              position: 'absolute',
+              top: '40px',
+              marginLeft: '50%'
+            }}
+            />
+          </StandaloneSearchBox>
+        </>
       </GoogleMap>
     </div>
   );
@@ -54,18 +83,3 @@ export default function Maps () {
 
 
 
-
-  // const center = useMemo(() => ({
-  //   lat: 43.45, lng: -80.49 }), []);
-  // const [selected, setSelected] = useState(null);
-  
-// return (
-//   <GoogleMap
-//   zoom={12}
-//   center={center}
-//   mapContainer="map-container"
- 
-//   >
-//   </GoogleMap>
-//   );
-// }
