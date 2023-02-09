@@ -7,13 +7,14 @@ import {
 } from "@react-google-maps/api";
 import "./App.css";
 import axios from "axios";
-import CreateNewReview from "./components/Reviews";
+import CreateNewReview from "./components/CreateNewReview";
 import Login from "./components/Login";
-import About from "./components/About";
-import Home from "./components/Home";
+// import from "./components/Register";
+import Review from "./components/Review";
+import Register from "./components/Register";
 import Navbar from "./Navbar";
 import { Route, Routes } from "react-router-dom";
-import Maps from "./components/Maps";
+import Map from "./components/Map";
 
 
 function App() {
@@ -31,15 +32,19 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <div className="Nav-Container">
+      <div className="Nav-Container">
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/review" element={<Review />} />
         </Routes>
-      </div> */}
-      <Maps />
+      </div>
+      <div className="first-row">
+      <Map />
+      <div className="create-review-container">
       <CreateNewReview />
+      </div>
+      </div>
     </>
   );
 }

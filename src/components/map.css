@@ -1,0 +1,13 @@
+
+.map-container {
+   display: flex;
+   /* border: 2px solid #80979E; */
+
+}
+
+.create-review-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   margin-left: 15px;
+ }
