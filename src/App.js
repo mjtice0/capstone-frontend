@@ -22,6 +22,21 @@ function App() {
     });
   }
 
+  const [place, setPlace] = useState(null)
+  const [review, setReview] = useState(null)
+  
+
+//get place id on user search
+
+
+  const onReviewClick = (id) => {
+    console.log("Hi, I'm in the App and the place id is" + id);
+    setReview(id);
+  };
+
+ 
+
+
   return (
     <>
       <Navbar />
