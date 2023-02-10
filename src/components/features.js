@@ -20,7 +20,7 @@ export const features = [
   {
     name: "Fluorescent Lighting",
     
-  }
+  },
   {
     name: "Natural Ligthing",
   },

@@ -1,44 +1,64 @@
 import React, { useState } from "react";
-import "./map.css";
+import "./Map.css";
+import { features } from "./features";
+
 const CreateNewReview = () => {
   const [review, setReview] = useState("");
-
-  // const onChange = (event) => {
-  //   setReview(event.target.value)
-  // }
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleOnChange = () => {
-    setIsChecked(!isChecked);
-  };
-  const onSubmit = (event) => {
+  // const handleOnChange = () => {
+  //   setIsChecked(!isChecked);
+  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
     console.log("form submitted!");
   };
 
   return (
     <div className="create-review-container">
-      <h2 className="review-header">Reviews</h2>
-      <form onSubmit={onSubmit}>
-        <label>User:</label>
-        <input type="text" placeholder="Enter Name" name="Username" />
-        <label>Location:</label>
-        <input type="text" placeholder="Enter Location" name="location" />
-        <label>Description:</label>
-        <input type="text" placeholder="Enter Review" name="description" />
-        <label>Quiet Music:</label>
-        <input
-          type="checkbox"
-          id="quiet"
-          checked={isChecked}
-          onChange={handleOnChange}
-        />
-        Quiet Music
-        <button type="submit" style={{ background: "Green" }}>
-          Submit
-        </button>
-      </form>
+      {/* <h2 className="review-header">Reviews</h2> */}
+      <form className="review-form" onSubmit={handleSubmit}>
+      <label>Title:</label>
+      <input type="text" placeholder="Enter a title" name="title" />
+      <label>Description:</label>
+      <input type="text" placeholder="Enter Review" name="description" />
+      <label>Rating:</label>
+      <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    <div className="accessibility-checklist">
+      <h2>Accessibility Features:</h2>
+      <ul className="features-list">
+        {features.map(({ name }, index) => {
+          return (     
+            <li key={index}>
+              <div className="left-section">
+                <input
+                  type="checkbox"
+                  id={`custom-checkbox-${index}`}
+                  name={name}
+                  value={name}
+                />
+                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+              </div>
+            </li>
+            );
+          })}
+      </ul>
     </div>
+    <button className="submitButton" type="Submit">Submit 
+    </button>
+    </form>
+  </div>
   );
 };
 
 export default CreateNewReview;
+
+
+{/* <label>Username:</label>
+      <input type="text" placeholder="Enter Name" name="Username" /> */}
