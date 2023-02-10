@@ -1,10 +1,5 @@
-import { useState, useRef, useCallback, useEffect } from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  StandaloneSearchBox,
-} from "@react-google-maps/api";
+import { useState } from "react";
+import { GoogleMap, useLoadScript, Marker, StandaloneSearchBox,} from "@react-google-maps/api";
 import "./Map.css";
 
 //three props to google map, zoom, center (lat and long), style for container (in div)
@@ -29,36 +24,26 @@ const searchBoxStyle = {
   marginLeft: "30%",
 };
 
-// const center = { lat: 39.742043, lng: -104.991531};
-
 export default function Map() {
   const [map, setMap] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
-  const [centerMap, setCenterMap] = useState({
+  const [mapCenter, setMapCenter] = useState({
     lat: 39.742043,
     lng: -104.991531,
   });
-  
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API,
     libraries,
   });
 
-  const onPlacesChanged = () => console.log(newPlace.getPlaces());
-  const onLoad = ref => {
+  const onPlacesChanged = () => {
+    setMapCenter(newPlace?.getPlaces()[0]?.geometry.location);
+    console.log(newPlace?.getPlaces()[0])
+  };
+  const onLoad = (ref) => {
     setNewPlace(ref);
-  }
-
-  // const[userLat, setUserLat] = useState();
-  // const[userLong, setUserLong] = useState();
-  //   useEffect(()=> {
-  //     navigator.geolocation.getCurrentPosition(position =>{
-  //     setUserLat(position.coords.latitude);
-  //     setUserLong(position.coords.longitude);
-  //     console.log(userLat, userLong);
-  //   })
-  // },[]);
-
+  };
 
   if (!isLoaded) return "Loading Maps";
 
@@ -66,9 +51,9 @@ export default function Map() {
     <div className="map-container">
       <GoogleMap
         zoom={12}
-        center={centerMap}
+        center={mapCenter}
         mapContainerStyle={mapContainerStyle}
-        onLoad={(map) => setMap(map)}   
+        onLoad={(map) => setMap(map)}
       >
         <>
           <StandaloneSearchBox
@@ -78,7 +63,7 @@ export default function Map() {
             <input
               type="text"
               className="searchbox"
-              placeholder="Search for Place (e.g. restaurant)"
+              placeholder="Search for Place"
               style={searchBoxStyle}
             />
           </StandaloneSearchBox>
@@ -88,44 +73,33 @@ export default function Map() {
   );
 }
 
+// onClick={(event) => {
+//   setMarkers((current) => [
+//     ...current,
+//     {
+//       lat: event.latLng.lat(),
+//       lng: event.latLng.lng(),
+//       time: new Date(),
+//     },
+
+// {markers.map((marker) => (
+//   <Marker
+//     key={marker.time.toISOString}
+//     position={{ lat: marker.lat, lng: marker.lng }}
+//   />
+// ))}
 
 
 
 
 
+ // if (!newPlace) return;
+    // const places = newPlace.getPlaces();
+    // console.log(places);
+    // map.setCenter(places[0]?.geometry.location);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//save reference to map, usestate to rerender, useref to not rerender
-  // const mapRef = useRef();
-  // const onMapLoad = useCallback((map) => {
-  //   mapRef.current = map;
-  // } )
-
-
-  // onClick={(event) => {
-  //   setMarkers((current) => [
-  //     ...current,
-  //     {
-  //       lat: event.latLng.lat(),
-  //       lng: event.latLng.lng(),
-  //       time: new Date(),
-  //     },
-
-  // {markers.map((marker) => (
-  //   <Marker
-  //     key={marker.time.toISOString}
-  //     position={{ lat: marker.lat, lng: marker.lng }}
-  //   />
-  // ))}
+    // const mapRef = useRef();
+// const onMapLoad = useCallback((map) => {
+//   mapRef.current = map;
+// } )

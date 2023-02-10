@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InforWindow,
-} from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker,InforWindow, } from "@react-google-maps/api";
 import "./App.css";
 import axios from "axios";
 import CreateNewReview from "./components/CreateNewReview";
 import Login from "./components/Login";
-// import from "./components/Register";
-import Review from "./components/Review";
+import Reviews from "./components/Reviews";
 import Register from "./components/Register";
 import Navbar from "./Navbar";
 import { Route, Routes } from "react-router-dom";
@@ -18,7 +12,6 @@ import Map from "./components/Map";
 
 
 function App() {
-  //Run on component initialization. Connect to backend --working
   useEffect(() => {
     runAxios();
   }, []);
@@ -36,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/review" element={<Review />} />
+          <Route path="/reviews" element={<Reviews />} />
         </Routes>
       </div>
       <div className="first-row">
