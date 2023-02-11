@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Map.css";
-import { features } from "./features";
+import { features } from "../datamanager/features";
 
 const CreateNewReview = (props) => {
   const [reviewTitle, setReviewTitle] = useState("");

@@ -1,4 +1,4 @@
-import initialData from './initialData'
+import initialData from './initialdata'
 
 const tempStorage = window.localStorage
 const tempStorageKey = 'temp-data'

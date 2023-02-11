@@ -1,8 +1,12 @@
-import { useState } from "react";
-import { GoogleMap, useLoadScript, Marker, StandaloneSearchBox,} from "@react-google-maps/api";
+import { useState, useEffect } from "react";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  StandaloneSearchBox,
+} from "@react-google-maps/api";
 import "./Map.css";
 
-//three props to google map, zoom, center (lat and long), style for container (in div)
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "60vw",
@@ -27,26 +31,47 @@ const searchBoxStyle = {
 export default function Map() {
   const [map, setMap] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
-  const [newMarker, setMarker] = useState([]);
+  const [marker, setMarker] = useState([]);
+  const [placeID, setPlaceID] = useState(null);
   const [mapCenter, setMapCenter] = useState({
     lat: 39.742043,
     lng: -104.991531,
   });
 
+  const [placeName, setPlaceName] = useState(null);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API,
     libraries,
   });
+//run in response to change in place id value, when place name changes useEffect will run
+  useEffect(() => {
+    if (placeID) {
+      console.log({ placeID });
+    }
+  }, [placeID]);
+// run in response to change in place name, when place name changes useEffect will run
+  useEffect(() => {
+    if (placeName) {
+      console.log({ placeName });
+    }
+  }, [placeName]);
+
 
   const onPlacesChanged = () => {
-    setMapCenter(newPlace?.getPlaces()[0]?.geometry.location);
-    setMarker(newPlace?.getPlaces()[0].geometry.location)
-    console.log(newPlace?.getPlaces()[0])
-   
+    const place = newPlace?.getPlaces()[0];
+    // console.log(place)
+    const placeName = place.name
+    const placeId = place.place_id;
 
+//set state 
+    setMapCenter(place?.geometry.location);
+    setPlaceID(placeId);
+    setPlaceName(placeName)
   };
   const onLoad = (ref) => {
     setNewPlace(ref);
+    console.log(newPlace)
+    console.log(placeName)
   };
 
   if (!isLoaded) return "Loading Maps";
@@ -59,10 +84,6 @@ export default function Map() {
         mapContainerStyle={mapContainerStyle}
         onLoad={(map) => setMap(map)}
       >
-{/* add state  */}
-        <Marker    
-            position={mapCenter}
-          />
         <>
           <StandaloneSearchBox
             onPlacesChanged={onPlacesChanged}
@@ -81,32 +102,6 @@ export default function Map() {
   );
 }
 
-//when user clicks on the marker have an info window pop up
-//onClick == info.window (if there is an info window)
-//if there are reviews, have the reviews render to the side
-//if there are no reviews, prompt user to add a review ('this {name} has no reviews, click here to add a review)
-//when user clicks on "add review" the review form will show up
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // onClick={(event) => {
 //   setMarkers((current) => [
 //     ...current,
@@ -123,17 +118,24 @@ export default function Map() {
 //   />
 // ))}
 
+// setMarker(newPlace?.getPlaces()[0].geometry.location)
+// setPlaceID(newPlace?.getPlaces()[0].place_id)
 
+// if (!newPlace) return;
+// const places = newPlace.getPlaces();
+// console.log(places);
+// map.setCenter(places[0]?.geometry.location);
 
-
-
- // if (!newPlace) return;
-    // const places = newPlace.getPlaces();
-    // console.log(places);
-    // map.setCenter(places[0]?.geometry.location);
-
-
-    // const mapRef = useRef();
+// const mapRef = useRef();
 // const onMapLoad = useCallback((map) => {
 //   mapRef.current = map;
 // } )
+
+
+  // const onPlacesChanged = () => {
+  //  if (!newPlace) return;
+  //   const places = newPlace.getPlaces();
+  //   // console.log(places[0].place_id);
+  //   map.setCenter(places[0]?.geometry.location);
+
+  // }
