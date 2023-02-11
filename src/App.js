@@ -13,34 +13,16 @@ import AddReviewForm from "./components/AddReviewForm";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./Navbar";
+import PlaceDetails from "./components/PlaceDetails";
 
 function App() {
-  const [review, setReview] = useState([]);
-  const [placeData, setPlaceData] = useState(null);
-
-  //get all reviews
-  useEffect(() => {
-    const getReviews = async () => {
-      try {
-        const review = await axios.get("http://localhost:8800/api/reviews");
-        // setReview(response.data)
-        console.log(review.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getReviews();
-  }, []);
-
-  //   axios
-  //     .get("http://localhost:8800/api/reviews")
-  //     .then((response) => {
-  //       // setReview(response.data);
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {});
-  // }, []);
-
+  const [selectedPlace, setSelectedPlace] = useState(null);
+  
+  function onMarkerClick(data) {
+    console.log("onMarkerClick()", data);
+    const place = data.place
+    setSelectedPlace(place)
+  }
 
   return (
     <>
@@ -51,13 +33,37 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>
+
       <div className="first-row">
-        <Map />
+        <Map onMarkerClick={onMarkerClick} />
         <AddReviewForm />
-        <div className="create-review-container"></div>
+        <PlaceDetails place={selectedPlace} />
       </div>
     </>
   );
 }
 
 export default App;
+
+//get all reviews
+// useEffect(() => {
+//   const getReviews = async () => {
+//     try {
+//       const review = await axios.get("http://localhost:8800/api/reviews");
+//       // setReview(response.data)
+//       console.log(review.data);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+//   getReviews();
+// }, []);
+
+//   axios
+//     .get("http://localhost:8800/api/reviews")
+//     .then((response) => {
+//       // setReview(response.data);
+//       console.log(response.data);
+//     })
+//     .catch((error) => {});
+// }, []);

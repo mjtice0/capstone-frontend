@@ -28,50 +28,56 @@ const searchBoxStyle = {
   marginLeft: "30%",
 };
 
-export default function Map() {
+export default function Map({ onMarkerClick }) {
   const [map, setMap] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
   const [marker, setMarker] = useState([]);
-  const [placeID, setPlaceID] = useState(null);
+  const [placeDetails, setPlaceDetails] = useState({});
   const [mapCenter, setMapCenter] = useState({
     lat: 39.742043,
     lng: -104.991531,
   });
 
-  const [placeName, setPlaceName] = useState(null);
+  //Goolge React Maps hook to load Google Maps Javascript API, specify key and library
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API,
     libraries,
   });
-//run in response to change in place id value, when place name changes useEffect will run
-  useEffect(() => {
-    if (placeID) {
-      console.log({ placeID });
-    }
-  }, [placeID]);
-// run in response to change in place name, when place name changes useEffect will run
-  useEffect(() => {
-    if (placeName) {
-      console.log({ placeName });
-    }
-  }, [placeName]);
 
+  useEffect(() => {
+    // simulate user click
+    onMarkerClick?.({
+      place: {
+        placeID: "aaaaaaaaaa",
+        placeName: "Denver Gardens",
+      },
+    });
+  }, []);
 
+  //Monitors changes to placeDetails and logs them in console.
+  useEffect(() => {
+    if (placeDetails) {
+      console.log({ placeDetails });
+    }
+  }, [placeDetails]);
+
+  //Called when user searches for a new place.
+  //Retrieves the selected place and resets the map center to the selected place.
+  //Place details object updates with the placeId and placeName.
   const onPlacesChanged = () => {
     const place = newPlace?.getPlaces()[0];
+    const placeDetails = { placeName: place.name, placeID: place.place_id };
     // console.log(place)
-    const placeName = place.name
-    const placeId = place.place_id;
 
-//set state 
+    //Sets state for mapCenter and PlaceDetails when onPlacesChanged is called
     setMapCenter(place?.geometry.location);
-    setPlaceID(placeId);
-    setPlaceName(placeName)
+    setPlaceDetails(placeDetails);
   };
+
+  //Callback function that is passed as props to standalonesearchbox component. It is called whenever the search box has finished loading. Takes ref in reference to the search box.
+  //Updates state with reference to what is searched in searchbox
   const onLoad = (ref) => {
     setNewPlace(ref);
-    console.log(newPlace)
-    console.log(placeName)
   };
 
   if (!isLoaded) return "Loading Maps";
@@ -131,11 +137,17 @@ export default function Map() {
 //   mapRef.current = map;
 // } )
 
+// const onPlacesChanged = () => {
+//  if (!newPlace) return;
+//   const places = newPlace.getPlaces();
+//   // console.log(places[0].place_id);
+//   map.setCenter(places[0]?.geometry.location);
 
-  // const onPlacesChanged = () => {
-  //  if (!newPlace) return;
-  //   const places = newPlace.getPlaces();
-  //   // console.log(places[0].place_id);
-  //   map.setCenter(places[0]?.geometry.location);
+// }
 
-  // }
+//old states
+//  // const [placeID, setPlaceID] = useState(null);
+// const [placeName, setPlaceName] = useState(null);
+
+// setPlaceID(placeId);
+// setPlaceName(placeName)
