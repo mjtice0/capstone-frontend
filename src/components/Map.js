@@ -4,6 +4,7 @@ import {
   useLoadScript,
   Marker,
   StandaloneSearchBox,
+  Data,
 } from "@react-google-maps/api";
 import "./Map.css";
 
@@ -72,26 +73,38 @@ export default function Map({ onMarkerClick }) {
     setMapCenter(places?.[0].geometry.location);
 
     // clear existing markers
-   
-    markers.forEach((marker, index) => {
-      markers[index] = null;
-    })
-     
-    
-    
-    // TODO
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
 
+    // TODO
+    //markerclick function
+    //on marker click, call marker click function
 
     // add new Markers with click event that calls onMarkerClick?.(data)
     setMarkers(
       places.map((place) => {
-        return new window.google.maps.Marker({
+        const marker = new window.google.maps.Marker({
           map,
           position: place.geometry.location,
+        });
+
+        marker.addListener("click", () => {
+          console.log("clicked", place.name);
+          onMarkerClick?.({
+            place: {
+              placeID: place.place_id,
+              placeName: place.name ,
+            },
+          });
         });
       })
     );
 
+    // const handleMarkerClick = (event) => {
+    //   onMarkerClick(event.target.value);
+    //  };
+    
     /* not needed */
     // const place = newPlace?.getPlaces()[0];
     // const placeDetails = { placeName: place.name, placeID: place.place_id };
