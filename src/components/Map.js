@@ -44,15 +44,15 @@ export default function Map({ onMarkerClick }) {
     libraries,
   });
 
-  useEffect(() => {
-    // simulate user click
-    onMarkerClick?.({
-      place: {
-        placeID: "aaaaaaaaaa",
-        placeName: "Denver Gardens",
-      },
-    });
-  }, []);
+  // useEffect(() => {
+  //   // simulate user click
+  //   onMarkerClick?.({
+  //     place: {
+  //       placeID: "aaaaaaaaaa",
+  //       placeName: "Denver Gardens",
+  //     },
+  //   });
+  // }, []);
 
   /* No longer needed */
   // //Monitors changes to placeDetails and logs them in console.
@@ -91,13 +91,15 @@ export default function Map({ onMarkerClick }) {
 
         marker.addListener("click", () => {
           console.log("clicked", place.name);
-          onMarkerClick?.({
+          onMarkerClick({
             place: {
               placeID: place.place_id,
               placeName: place.name ,
             },
           });
         });
+
+        
       })
     );
 
