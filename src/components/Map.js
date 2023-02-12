@@ -72,8 +72,15 @@ export default function Map({ onMarkerClick }) {
     setMapCenter(places?.[0].geometry.location);
 
     // clear existing markers
-    // TODO
+   
+    markers.forEach((marker, index) => {
+      markers[index] = null;
+    })
+     
     
+    
+    // TODO
+
 
     // add new Markers with click event that calls onMarkerClick?.(data)
     setMarkers(
