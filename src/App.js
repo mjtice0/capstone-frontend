@@ -36,7 +36,7 @@ function App() {
 
       <div className="first-row">
         <Map onMarkerClick={onMarkerClick} />
-        <AddReviewForm />
+        {/* <AddReviewForm /> */}
         <PlaceDetails place={selectedPlace} />
       </div>
     </>

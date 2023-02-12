@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Map.css";
-import { features } from "../datamanager/features";
+import { features } from "../data/features";
+import DataManager from "../data/DataManager";
 
-const CreateNewReview = (props) => {
+const AddReviewForm = (props) => {
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewDescription, setReviewDescription] = useState("");
-  const [reviewRating, setReviewRating] = useState("");
+  const [reviewRating, setReviewRating] = useState(-1);
   const [checkedState, setCheckedState] = useState(
     new Array(features.length).fill(false)
   );
@@ -26,29 +27,35 @@ const CreateNewReview = (props) => {
   };
 
   const handleReviewRating = (event) => {
-    setReviewRating(event.target.value);
+    setReviewRating(parseInt(event.target.value));
   };
 
-  const handleSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log("form submitted!");
 
-    //   const newReview = {
-    //     title: reviewTitle,
-    //     description: reviewDescription,
-    //     rating: reviewRating,
-    //   };
+       const newReview = {
+         title: reviewTitle,
+         description: reviewDescription,
+         rating: reviewRating,
+         checkboxes: checkedState
+       };
 
-    //   props.onSubmitReview(newReview);
-    //   setReviewTitle("");
-    //   setReviewDescription("");
-    //   setReviewRating(0);
+       DataManager.addReview(newReview);
+       setReviewTitle("");
+       setReviewDescription("");
+       setReviewRating(-1);
+       setCheckedState(false);
   };
+
+  //enable submit review button when there are characters in description and rating
+  const enabled = reviewTitle.length > 0 && reviewDescription.length > 0 && reviewRating;
+  
 
   return (
     <div className="create-review-container">
       {/* <h2 className="review-header">Reviews</h2> */}
-      <form className="review-form" onSubmit={handleSubmit}>
+      <form className="review-form" onSubmit={handleFormSubmit}>
         <label>Title:</label>
         <input
           type="text"
@@ -65,11 +72,11 @@ const CreateNewReview = (props) => {
         />
         <label>Rating:</label>
         <select value={reviewRating} onChange={handleReviewRating}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          <option value="1">🦖</option>
+          <option value="2">🦖🦖</option>
+          <option value="3">🦖🦖🦖</option>
+          <option value="4">🦖🦖🦖🦖</option>
+          <option value="5">🦖🦖🦖🦖🦖</option>
         </select>
         <div className="accessibility-checklist">
           <h2>Accessibility Features:</h2>
@@ -93,7 +100,7 @@ const CreateNewReview = (props) => {
             })}
           </ul>
         </div>
-        <button className="submitButton" type="Submit">
+        <button className="submitButton" type="Submit" disabled={!enabled}>
           Submit
         </button>
       </form>
@@ -101,4 +108,4 @@ const CreateNewReview = (props) => {
   );
 };
 
-export default CreateNewReview;
+export default AddReviewForm;
