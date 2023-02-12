@@ -30,9 +30,8 @@ const searchBoxStyle = {
 
 export default function Map({ onMarkerClick }) {
   const [map, setMap] = useState(null);
-  const [newPlace, setNewPlace] = useState(null);
-  const [marker, setMarker] = useState([]);
-  const [placeDetails, setPlaceDetails] = useState({});
+  const [markers, setMarkers] = useState([]);
+  const [searchBox, setSearchBox] = useState(null);
   const [mapCenter, setMapCenter] = useState({
     lat: 39.742043,
     lng: -104.991531,
@@ -54,30 +53,49 @@ export default function Map({ onMarkerClick }) {
     });
   }, []);
 
-  //Monitors changes to placeDetails and logs them in console.
-  useEffect(() => {
-    if (placeDetails) {
-      console.log({ placeDetails });
-    }
-  }, [placeDetails]);
+  /* No longer needed */
+  // //Monitors changes to placeDetails and logs them in console.
+  // useEffect(() => {
+  //   if (placeDetails) {
+  //     console.log({ placeDetails });
+  //   }
+  // }, [placeDetails]);
 
-  //Called when user searches for a new place.
-  //Retrieves the selected place and resets the map center to the selected place.
-  //Place details object updates with the placeId and placeName.
+  // https://react-google-maps-api-docs.netlify.app/#standalonesearchbox
   const onPlacesChanged = () => {
-    const place = newPlace?.getPlaces()[0];
-    const placeDetails = { placeName: place.name, placeID: place.place_id };
-    // console.log(place)
+    if (!searchBox) return; // ensure searchBox is loaded/ready
 
-    //Sets state for mapCenter and PlaceDetails when onPlacesChanged is called
-    setMapCenter(place?.geometry.location);
-    setPlaceDetails(placeDetails);
+    const places = searchBox.getPlaces();
+    console.log({ places });
+
+    // Center map on first result
+    setMapCenter(places?.[0].geometry.location);
+
+    // clear existing markers
+    // TODO
+    
+
+    // add new Markers with click event that calls onMarkerClick?.(data)
+    setMarkers(
+      places.map((place) => {
+        return new window.google.maps.Marker({
+          map,
+          position: place.geometry.location,
+        });
+      })
+    );
+
+    /* not needed */
+    // const place = newPlace?.getPlaces()[0];
+    // const placeDetails = { placeName: place.name, placeID: place.place_id };
+    // console.log(place)
+    // setPlaceDetails(placeDetails);
   };
 
-  //Callback function that is passed as props to standalonesearchbox component. It is called whenever the search box has finished loading. Takes ref in reference to the search box.
-  //Updates state with reference to what is searched in searchbox
-  const onLoad = (ref) => {
-    setNewPlace(ref);
+  // https://react-google-maps-api-docs.netlify.app/#standalonesearchbox
+  // This callback is called when the searchBox instance has loaded.
+  const onLoadSearchBox = (searchBoxInstance) => {
+    setSearchBox(searchBoxInstance);
   };
 
   if (!isLoaded) return "Loading Maps";
@@ -93,7 +111,7 @@ export default function Map({ onMarkerClick }) {
         <>
           <StandaloneSearchBox
             onPlacesChanged={onPlacesChanged}
-            onLoad={onLoad}
+            onLoad={onLoadSearchBox}
           >
             <input
               type="text"
