@@ -90,11 +90,11 @@ const AddReviewForm = (props) => {
           <option value="5">🦖🦖🦖🦖🦖</option>
         </select>
         <div className="accessibility-checklist">
-          <h2>Accessibility Features:</h2>
+          <h2 className="checkbox-heading">Accessibility Features:</h2>
           <ul className="features-list">
             {features.map(({ name }, index) => {
               return (
-                <li key={index}>
+                <li key={index}>  
                   <div className="left-section">
                     <input
                       type="checkbox"
@@ -114,7 +114,6 @@ const AddReviewForm = (props) => {
         <button className="submitButton" type="Submit" disabled={!enabled}>
           Submit
         </button>
-        ``
       </form>
     </div>
   );

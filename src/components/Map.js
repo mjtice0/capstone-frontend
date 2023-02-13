@@ -90,6 +90,7 @@ export default function Map({ onMarkerClick }) {
 
   return (
     <div className="map-container">
+      <div className="map">
       <GoogleMap
         zoom={12}
         center={mapCenter}
@@ -110,6 +111,7 @@ export default function Map({ onMarkerClick }) {
           </StandaloneSearchBox>
         </>
       </GoogleMap>
+      </div>
     </div>
   );
 }

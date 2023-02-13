@@ -1,54 +1,86 @@
 
 .map-container {
-   display: flex;
-   border: 2px solid #80979E;
 
+  display: flex;
 }
+.map {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-content: center;
+   margin: 15px;
+   margin-top: 30px;
+}
+
+/* .reviews-container {
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    float: left;
+} */
 
 .create-review-container {
    display: flex;
-   flex-direction: row-reverse;
-   max-width: 100%;
-   justify-content: flex-start;
-   margin-left: 15px;
-   flex-wrap: wrap;
-   gap:5.8rem;
-   margin-top:0.5rem;
- }
+   flex-direction: column;
+   max-width: 500px;
+   justify-content: space-around;
+   align-items: center; 
+   margin-left: 15px; 
+   padding: 20px;
+   border: 2px solid green; 
+   border-radius: 5%;
+   font-size: 16px;
+}
 
+ /* .create-review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid lime;
+} */
 .review-form {
   display: flex;
   flex-direction: column;
-  margin-left:2.2rem;
+  margin: 2.2rem;
+
   min-height: 1.2rem;
 
 }
  .accessibility-checklist {
    list-style: none;
-   padding: 5px;
+   padding: 2px;
+   display: flex;
+   align-items: flex-start;
+   justify-content: center;
+   align-content: center;
+   flex-direction: row;
+ }
 
-  
- }
- 
+
  .features-list li {
-  flex-direction: column;
+  flex-direction: row;
    margin-bottom: 0.5rem;
-   padding: 3px;
-   justify-content: left;
-   margin-right: 5px;
-  
+   padding: 2px;
+   margin-right: 10px;
  }
- 
- 
+
  .submitButton{
+  justify-content: center;
+  align-items: center;
+  margin-left: 70px;
   margin-top:1rem;
+  flex-direction: row;
   margin-bottom:1rem;
   color: white;
   background-color: black;
-}
-
+  height: 100 px;
+  width: 300px;
+  font-size: 22px;
+ }
 
 .review-message {
   flex-direction: column;
   align-content: flex-start;
 }
+

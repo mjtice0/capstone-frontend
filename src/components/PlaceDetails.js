@@ -14,10 +14,10 @@ function Reviews({ reviews }) {
 
   return (
     <ul>
-      {reviews.map((review) => {
-        const { id, title, description, rating } = review;
+      {reviews.map((review, i) => {
+        const { title, description, rating } = review;
         return (
-          <li key={id}>
+          <li key={i}>
             <h3>{title}</h3>
             <h3>{description}</h3>
             <p>{rating}</p>
@@ -48,10 +48,13 @@ export default function PlaceDetails({ place }) {
   //show reviews results for a place
   //if there are not places than show only review button
   return (
-    <>
+    <div className="reviews-containter">
+      <div className="review-form">
+      <h1>{place?.name}</h1>
       <Reviews reviews={reviews} />
       <AddReviewForm />
-    </>
+      </div>
+    </div>
   );
 }
 
