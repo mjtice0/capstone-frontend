@@ -44,24 +44,6 @@ export default function Map({ onMarkerClick }) {
     libraries,
   });
 
-  // useEffect(() => {
-  //   // simulate user click
-  //   onMarkerClick?.({
-  //     place: {
-  //       placeId: "aaaaaaaaaa",
-  //       placeName: "Denver Gardens",
-  //     },
-  //   });
-  // }, []);
-
-  /* No longer needed */
-  // //Monitors changes to placeDetails and logs them in console.
-  // useEffect(() => {
-  //   if (placeDetails) {
-  //     console.log({ placeDetails });
-  //   }
-  // }, [placeDetails]);
-
   // https://react-google-maps-api-docs.netlify.app/#standalonesearchbox
   const onPlacesChanged = () => {
     if (!searchBox) return; // ensure searchBox is loaded/ready
@@ -76,10 +58,6 @@ export default function Map({ onMarkerClick }) {
     markers.forEach((marker) => {
       marker.setMap(null);
     });
-
-    // TODO
-    //markerclick function
-    //on marker click, call marker click function
 
     // add new Markers with click event that calls onMarkerClick?.(data)
     setMarkers(
@@ -100,16 +78,6 @@ export default function Map({ onMarkerClick }) {
         });
       })
     );
-
-    // const handleMarkerClick = (event) => {
-    //   onMarkerClick(event.target.value);
-    //  };
-
-    /* not needed */
-    // const place = newPlace?.getPlaces()[0];
-    // const placeDetails = { placeName: place.name, placeId: place.place_id };
-    // console.log(place)
-    // setPlaceDetails(placeDetails);
   };
 
   // https://react-google-maps-api-docs.netlify.app/#standalonesearchbox
@@ -145,47 +113,3 @@ export default function Map({ onMarkerClick }) {
     </div>
   );
 }
-
-// onClick={(event) => {
-//   setMarkers((current) => [
-//     ...current,
-//     {
-//       lat: event.latLng.lat(),
-//       lng: event.latLng.lng(),
-//       time: new Date(),
-//     },
-
-// {markers.map((marker) => (
-//   <Marker
-//     key={marker.time.toISOString}
-//     position={{ lat: marker.lat, lng: marker.lng }}
-//   />
-// ))}
-
-// setMarker(newPlace?.getPlaces()[0].geometry.location)
-// setPlaceID(newPlace?.getPlaces()[0].place_id)
-
-// if (!newPlace) return;
-// const places = newPlace.getPlaces();
-// console.log(places);
-// map.setCenter(places[0]?.geometry.location);
-
-// const mapRef = useRef();
-// const onMapLoad = useCallback((map) => {
-//   mapRef.current = map;
-// } )
-
-// const onPlacesChanged = () => {
-//  if (!newPlace) return;
-//   const places = newPlace.getPlaces();
-//   // console.log(places[0].place_id);
-//   map.setCenter(places[0]?.geometry.location);
-
-// }
-
-//old states
-//  // const [placeId, setPlaceID] = useState(null);
-// const [placeName, setPlaceName] = useState(null);
-
-// setPlaceID(placeId);
-// setPlaceName(placeName)
