@@ -3,21 +3,16 @@ import "./Map.css";
 import { features } from "../data/features";
 import DataManager from "../data/DataManager";
 
-const AddReviewForm = (props) => {
+const AddReviewForm = ({ placeId }) => {
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewName, setReviewName] = useState("");
   const [reviewDescription, setReviewDescription] = useState("");
   const [reviewRating, setReviewRating] = useState(-1);
-  const [checkedState, setCheckedState] = useState(
-    new Array(features.length).fill(false)
-  );
+  const [reviewFeatures, setReviewFeatures] = useState([]); // array of String
 
-  const handleOnChange = (position) => {
-    console.log("Im working");
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setCheckedState(updatedCheckedState);
+  const onChangeFeature = (event) => {
+    const features = new FormData(event.target.form).getAll("feature");
+    setReviewFeatures(features);
   };
 
   const handleReviewName = (event) => {
@@ -35,21 +30,29 @@ const AddReviewForm = (props) => {
     setReviewRating(parseInt(event.target.value));
   };
 
-  const handleFormSubmit = (placeId) => {
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
     console.log("form submitted!");
 
+    const featuresValue = reviewFeatures.sort().join(", ");
+    console.log(featuresValue);
+
     const newReview = {
+      name: reviewName,
       title: reviewTitle,
       description: reviewDescription,
       rating: reviewRating,
+      features: featuresValue,
+
       // checkboxes: checkedState,
     };
 
     DataManager.addReview(placeId, newReview);
+    setReviewName("");
     setReviewTitle("");
     setReviewDescription("");
     setReviewRating(-1);
-    // setCheckedState(false);
+    setReviewFeatures([]);
   };
 
   //enable submit review button when there are characters in description and rating
@@ -94,15 +97,15 @@ const AddReviewForm = (props) => {
           <ul className="features-list">
             {features.map(({ name }, index) => {
               return (
-                <li key={index}>  
+                <li key={index}>
                   <div className="left-section">
                     <input
                       type="checkbox"
                       id={`custom-checkbox-${index}`}
-                      name={name}
+                      name="feature"
                       value={name}
-                      checked={checkedState[index]}
-                      onChange={() => handleOnChange(index)}
+                      checked={reviewFeatures.includes(name)}
+                      onChange={onChangeFeature}
                     />
                     <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
                   </div>

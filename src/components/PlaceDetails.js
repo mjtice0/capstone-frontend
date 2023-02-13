@@ -5,23 +5,22 @@ import "./Map.css";
 
 // React component Reviews - displays all reviews on screen that it receives
 function Reviews({ reviews }) {
-  if (!reviews) 
-    return <div>reviews are loading</div>;
-  
-  if (!reviews.length) 
+  if (!reviews) return <div>reviews are loading</div>;
+
+  if (!reviews.length)
     return <div className="review-message">there are no reviews</div>;
-  
 
   return (
     <ul>
       {reviews.map((review, i) => {
-        const { title, description, rating } = review;
+        const { name, title, description, rating, features } = review;
         return (
           <li key={i}>
+            <h2>{name}</h2>
             <h3>{title}</h3>
             <h3>{description}</h3>
             <p>{rating}</p>
-      
+            <p>{features}</p>
           </li>
         );
       })}
@@ -50,9 +49,9 @@ export default function PlaceDetails({ place }) {
   return (
     <div className="reviews-containter">
       <div className="review-form">
-      <h1>{place?.name}</h1>
-      <Reviews reviews={reviews} />
-      <AddReviewForm />
+        <h1>{place?.name}</h1>
+        <Reviews reviews={reviews} />
+        <AddReviewForm placeId={place?.placeId} />
       </div>
     </div>
   );

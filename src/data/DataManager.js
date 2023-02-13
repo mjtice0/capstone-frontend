@@ -35,18 +35,28 @@ function getReviews(placeId) {
   // return Promise.resolve(data.places[placeId].reviews)
 }
 
+// TEMP
+console.clear();
+addReview("ChIJCXdw0w9nbIcRbdG3kJPQD7w", {
+  name: "name",
+  title: "title",
+  description: "desc",
+  rating: 5,
+});
+
 function addReview(placeId, reviewData) {
+  console.log("DataManager.addReview()", { placeId, reviewData });
   return axios
     .post(`http://localhost:8800/api/reviews/${placeId}`, {
-      id: placeId,
       name: reviewData.name,
       title: reviewData.title,
       description: reviewData.description,
       rating: reviewData.rating,
     })
     .then((response) => {
-      // setReviews([...reviewData, response.data]);
+      // setReviewData([...reviewData, response.data]);
       console.log(response.data);
+      console.log("I am working");
     })
     .catch((error) => {
       console.log(error);
