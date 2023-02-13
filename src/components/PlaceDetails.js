@@ -47,12 +47,14 @@ export default function PlaceDetails({ place }) {
   //show reviews results for a place
   //if there are not places than show only review button
   return (
-    <div className="reviews-containter">
-      <div className="review-form">
-        <h1>{place?.name}</h1>
-        <Reviews reviews={reviews} />
-        <AddReviewForm placeId={place?.placeId} />
-      </div>
+    <div className="reviews-container">
+        <div className="show-reviews">
+          <h1>REVIEWS</h1>
+          <Reviews reviews={reviews} />
+        </div>
+        <div className="reivews-form">
+          <AddReviewForm placeId={place?.placeId} />
+        </div>
     </div>
   );
 }

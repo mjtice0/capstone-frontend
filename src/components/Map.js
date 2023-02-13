@@ -10,22 +10,23 @@ import "./Map.css";
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  width: "60vw",
+  width: "70vw",
   height: "60vh",
-  border: `2px solid #274A82`,
+  border: `3px solid black`,
 };
 
 const searchBoxStyle = {
   boxSizing: "border-box",
-  border: `2px solid #274A82`,
-  padding: "10px",
-  width: `300px`,
-  height: `42px`,
-  borderRadius: `6px`,
-  fontSize: `18px`,
+  border: `2px solid black`,
+  padding: "20px",
+  width: `400px`,
+  height: `55px`,
+  borderRadius: `10px`,
+  fontSize: `20px`,
+  fontWeight: 'bold',
   margin: "center",
   position: "absolute",
-  top: "20px",
+  top: "30px",
   marginLeft: "30%",
 };
 
@@ -98,17 +99,20 @@ export default function Map({ onMarkerClick }) {
         onLoad={(map) => setMap(map)}
       >
         <>
+        <div className="search-box">
+          {/* <i class="fa-solid fa-magnifying-glass"></i> */}
           <StandaloneSearchBox
             onPlacesChanged={onPlacesChanged}
             onLoad={onLoadSearchBox}
           >
             <input
-              type="text"
+              type="search"
               className="searchbox"
               placeholder="Search for Place"
-              style={searchBoxStyle}
+              style={searchBoxStyle} 
             />
           </StandaloneSearchBox>
+        </div>  
         </>
       </GoogleMap>
       </div>

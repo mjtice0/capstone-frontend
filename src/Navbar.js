@@ -15,6 +15,7 @@ const Navbar = () => {
         <CustomLink to="/login">Login</CustomLink>
         <CustomLink to="/register">Register</CustomLink>
       </ul>
+      {/* <i class="fa-solid fa-magnifying-glass"></i> */}
     </nav>
   );
 };

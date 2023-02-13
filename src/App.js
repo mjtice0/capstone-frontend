@@ -15,6 +15,7 @@ import Register from "./pages/Register";
 import Navbar from "./Navbar";
 import Footer from "./components/Footer";
 import PlaceDetails from "./components/PlaceDetails";
+import Header from "./components/header/Header";
 
 
 function App() {
@@ -28,17 +29,15 @@ function App() {
 
   return (
     <>
-      <Navbar />
       <div className="Nav-Container">
+      <Navbar />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
       </div>
-
       <div className="first-row">
         <Map onMarkerClick={onMarkerClick} />
-        {/* <AddReviewForm /> */}
         <PlaceDetails place={selectedPlace} />
       </div>
 
