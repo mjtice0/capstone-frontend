@@ -1,24 +1,27 @@
 import { useEffect, useState } from "react";
 import AddReviewForm from "./AddReviewForm";
-import axios from "axios";
 import DataManager from "../data/DataManager";
+import "./Map.css";
 
-// React component Reviews - displays all reviews on screen taht it receives
+// React component Reviews - displays all reviews on screen that it receives
 function Reviews({ reviews }) {
-  if (!reviews) {
-    return <div>No reviews found</div>;
-  }
+  if (!reviews) 
+    return <div>reviews are loading</div>;
+  
+  if (!reviews.length) 
+    return <div className="review-message">there are no reviews</div>;
+  
 
   return (
     <ul>
       {reviews.map((review) => {
-        const { id, title, description, rating, checkboxes } = review;
+        const { id, title, description, rating } = review;
         return (
           <li key={id}>
             <h3>{title}</h3>
             <h3>{description}</h3>
             <p>{rating}</p>
-            <p>{checkboxes}</p>
+      
           </li>
         );
       })}
@@ -33,9 +36,9 @@ export default function PlaceDetails({ place }) {
   useEffect(() => {
     if (!place) return;
 
-    const { placeID } = place;
-    console.log("new place selected", { placeID, place });
-    DataManager.getReviews(placeID).then((reviews) => {
+    const { placeId } = place;
+    console.log("new place selected", { placeId, place });
+    DataManager.getReviews(placeId).then((reviews) => {
       console.log("got reviews!", { reviews });
       setReviews(reviews);
     });
@@ -46,8 +49,8 @@ export default function PlaceDetails({ place }) {
   //if there are not places than show only review button
   return (
     <>
-      <AddReviewForm />
       <Reviews reviews={reviews} />
+      <AddReviewForm />
     </>
   );
 }
@@ -62,9 +65,9 @@ export default function PlaceDetails({ place }) {
 //   console.log("new place selected", { place });
 // }, [place]);
 
-// const getReviewsByPlaceID = (placeID) => {
+// const getReviewsByPlaceID = (placeId) => {
 //   axios
-//     .get(`http://localhost:8800/reviews?placeID=${placeID}`)
+//     .get(`http://localhost:8800/reviews?placeId=${placeId}`)
 //     .then((response) => response.data)
 //     .catch((error) => {
 //       console.error(error);

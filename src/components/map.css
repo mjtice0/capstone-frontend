@@ -19,7 +19,6 @@
 .review-form {
   display: flex;
   flex-direction: column;
-  align-content: flex-start;
   margin-left:2.2rem;
   min-height: 1.2rem;
 
@@ -44,7 +43,12 @@
  .submitButton{
   margin-top:1rem;
   margin-bottom:1rem;
-  color: green;
+  color: white;
+  background-color: black;
 }
 
 
+.review-message {
+  flex-direction: column;
+  align-content: flex-start;
+}

@@ -48,7 +48,7 @@ export default function Map({ onMarkerClick }) {
   //   // simulate user click
   //   onMarkerClick?.({
   //     place: {
-  //       placeID: "aaaaaaaaaa",
+  //       placeId: "aaaaaaaaaa",
   //       placeName: "Denver Gardens",
   //     },
   //   });
@@ -93,23 +93,21 @@ export default function Map({ onMarkerClick }) {
           console.log("clicked", place.name);
           onMarkerClick({
             place: {
-              placeID: place.place_id,
-              placeName: place.name ,
+              placeId: place.place_id,
+              placeName: place.name,
             },
           });
         });
-
-        
       })
     );
 
     // const handleMarkerClick = (event) => {
     //   onMarkerClick(event.target.value);
     //  };
-    
+
     /* not needed */
     // const place = newPlace?.getPlaces()[0];
-    // const placeDetails = { placeName: place.name, placeID: place.place_id };
+    // const placeDetails = { placeName: place.name, placeId: place.place_id };
     // console.log(place)
     // setPlaceDetails(placeDetails);
   };
@@ -186,7 +184,7 @@ export default function Map({ onMarkerClick }) {
 // }
 
 //old states
-//  // const [placeID, setPlaceID] = useState(null);
+//  // const [placeId, setPlaceID] = useState(null);
 // const [placeName, setPlaceName] = useState(null);
 
 // setPlaceID(placeId);

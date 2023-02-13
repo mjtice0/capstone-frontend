@@ -5,6 +5,7 @@ import DataManager from "../data/DataManager";
 
 const AddReviewForm = (props) => {
   const [reviewTitle, setReviewTitle] = useState("");
+  const [reviewName, setReviewName] = useState("");
   const [reviewDescription, setReviewDescription] = useState("");
   const [reviewRating, setReviewRating] = useState(-1);
   const [checkedState, setCheckedState] = useState(
@@ -19,6 +20,10 @@ const AddReviewForm = (props) => {
     setCheckedState(updatedCheckedState);
   };
 
+  const handleReviewName = (event) => {
+    setReviewName(event.target.value);
+  };
+
   const handleReviewTitle = (event) => {
     setReviewTitle(event.target.value);
   };
@@ -30,32 +35,38 @@ const AddReviewForm = (props) => {
     setReviewRating(parseInt(event.target.value));
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
+  const handleFormSubmit = (placeId) => {
     console.log("form submitted!");
 
-       const newReview = {
-         title: reviewTitle,
-         description: reviewDescription,
-         rating: reviewRating,
-         checkboxes: checkedState
-       };
+    const newReview = {
+      title: reviewTitle,
+      description: reviewDescription,
+      rating: reviewRating,
+      // checkboxes: checkedState,
+    };
 
-       DataManager.addReview(newReview);
-       setReviewTitle("");
-       setReviewDescription("");
-       setReviewRating(-1);
-       setCheckedState(false);
+    DataManager.addReview(placeId, newReview);
+    setReviewTitle("");
+    setReviewDescription("");
+    setReviewRating(-1);
+    // setCheckedState(false);
   };
 
   //enable submit review button when there are characters in description and rating
-  const enabled = reviewTitle.length > 0 && reviewDescription.length > 0 && reviewRating;
-  
+  const enabled =
+    reviewTitle.length > 0 && reviewDescription.length > 0 && reviewRating;
 
   return (
     <div className="create-review-container">
       {/* <h2 className="review-header">Reviews</h2> */}
       <form className="review-form" onSubmit={handleFormSubmit}>
+        <label>Name:</label>
+        <input
+          type="text"
+          placeholder="Enter name"
+          value={reviewName}
+          onChange={handleReviewName}
+        />
         <label>Title:</label>
         <input
           type="text"
@@ -103,6 +114,7 @@ const AddReviewForm = (props) => {
         <button className="submitButton" type="Submit" disabled={!enabled}>
           Submit
         </button>
+        ``
       </form>
     </div>
   );

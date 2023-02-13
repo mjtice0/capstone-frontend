@@ -21,7 +21,7 @@ function getPlace(placeId) {
 
 function getReviews(placeId) {
   return axios
-    .get(`http://localhost:8800/reviews?placeID=${placeId}`)
+    .get(`http://localhost:8800/api/reviews/${placeId}`)
     .then((response) => {
       console.log("getReviews()", { response });
       return response;
@@ -36,24 +36,24 @@ function getReviews(placeId) {
 
 function addReview(placeId, reviewData) {
   return axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/reviews`, {
-        id: placeId,
-        name: reviewData.name,
-        title: reviewData.title,
-        description: reviewData.description,
-        rating: reviewData.rating,
-      })
-      .then((response) => {
-        // setReviews([...reviewData, response.data]);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        throw error;
-      });
-  };
+    .post(`${process.env.REACT_APP_BACKEND_URL}/api/reviews/{placeId}`, {
+      id: placeId,
+      name: reviewData.name,
+      title: reviewData.title,
+      description: reviewData.description,
+      rating: reviewData.rating,
+    })
+    .then((response) => {
+      // setReviews([...reviewData, response.data]);
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+      throw error;
+    });
+}
 
-  // TODO
+// TODO
 //   return Promise.resolve();
 // }
 
