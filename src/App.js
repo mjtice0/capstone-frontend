@@ -13,7 +13,9 @@ import AddReviewForm from "./components/AddReviewForm";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./Navbar";
+import Footer from "./components/Footer";
 import PlaceDetails from "./components/PlaceDetails";
+
 
 function App() {
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -39,6 +41,11 @@ function App() {
         {/* <AddReviewForm /> */}
         <PlaceDetails place={selectedPlace} />
       </div>
+
+      <div className="footer-container">
+        <Footer />
+      </div>
+      
     </>
   );
 }
