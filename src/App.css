@@ -13,9 +13,7 @@
 }
 
 .footer {
-  display: flex;
   flex-direction: row;
-  position: ;
   height: 60px;
   background-color: black;
   margin-top: auto;

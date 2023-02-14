@@ -27,9 +27,9 @@ function App() {
       <div className="Nav-Container">
         <Navbar />
         <div className="first-row">
-        <Map onMarkerClick={onMarkerClick} />
-        <PlaceDetails place={selectedPlace} />
-      </div>
+          <Map onMarkerClick={onMarkerClick} />
+          <PlaceDetails place={selectedPlace} />
+        </div>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -44,28 +44,27 @@ function App() {
 
 export default App;
 
-
 // return (
-  //     <>
-  //       <nav className="navbar">
-  //         <Link to="/" className="site-heading">
-  //           <img src={logo} alt="accessibility-logo" className="logo" />
-  //         </Link>
-  //         <ul>
-  //           <Link to="/login">Home</Link>
-  //           <Link to="/login">Login</Link>
-  //           <Link to="/register">Register</Link>
-  //         </ul>
-  //       </nav>
-        
-  //       <Routes>
-  //         <Route path="/login" element={<Login />} />
-  //         <Route path="/register" element={<Register />} />
-  //       </Routes>
-  //       <div className="first-row">
-  //          <Map onMarkerClick={onMarkerClick} />
-  //          <PlaceDetails place={selectedPlace} />
-  //        </div>
-  //     </>
-  //   );
-  // }
+//     <>
+//       <nav className="navbar">
+//         <Link to="/" className="site-heading">
+//           <img src={logo} alt="accessibility-logo" className="logo" />
+//         </Link>
+//         <ul>
+//           <Link to="/login">Home</Link>
+//           <Link to="/login">Login</Link>
+//           <Link to="/register">Register</Link>
+//         </ul>
+//       </nav>
+
+//       <Routes>
+//         <Route path="/login" element={<Login />} />
+//         <Route path="/register" element={<Register />} />
+//       </Routes>
+//       <div className="first-row">
+//          <Map onMarkerClick={onMarkerClick} />
+//          <PlaceDetails place={selectedPlace} />
+//        </div>
+//     </>
+//   );
+// }

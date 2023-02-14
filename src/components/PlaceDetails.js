@@ -5,38 +5,42 @@ import "./Map.css";
 
 // React component Reviews - displays all reviews on screen that it receives
 function Reviews({ reviews, place }) {
-  if (!reviews) return <div>There are no reviews</div>
-  
-  
-  if (!reviews.length)
-    return  (
-    <div className="review-message">
-      <h3>There are no reviews for addplace yet. Add review here!</h3>
-      <button className="reviews-button" type="Submit">Add Review</button>
-    </div>
-    )
+  // const [showForm, setShowForm] = useState(false);
 
+  // const handleAddReviewClick = () => {
+  //   setShowForm(true);
+  // };
+
+  // if (!reviews) return <div>There are no reviews</div>;
+
+  if (!reviews.length)
+    return (
+      <div className="review-message">
+        <h3>There are no reviews yet. Add review here!</h3>
+        {/* <button onClick={handleAddReviewClick} className="reviews-button" type="Submit">
+          Add Review
+        </button> */}
+      </div>
+    );
+
+  //add place name to render when a place is selected
   return (
     <ul className="reviews-list">
       {reviews.map((review, i) => {
         const { name, title, description, rating, features } = review;
         return (
           <li key={i}>
-            {/* <h2> Place: {place.name} </h2> */}
             <h3>Name: {name}</h3>
             <h3>Title: {title}</h3>
             <h3>Review: {description}</h3>
             <h3>Rating: {rating}</h3>
             <h3>Features: {features}</h3>
-
           </li>
         );
       })}
     </ul>
   );
 }
-
-{/* <button className="reviews-button" type="Submit">Submit</button> */}
 
 export default function PlaceDetails({ place }) {
   const [reviews, setReviews] = useState([]);
@@ -57,15 +61,14 @@ export default function PlaceDetails({ place }) {
   //show reviews results for a place
   //if there are not places than show only review button
   return (
-    <div className="reviews-container">
-        <div className="show-reviews">
+      <div className="reviews-container">
+        <div className="show-review">
           <Reviews reviews={reviews} />
         </div>
+
         <div className="reivews-form">
           <AddReviewForm placeId={place?.placeId} />
         </div>
-    </div>
+      </div>
   );
 }
-
-

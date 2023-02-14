@@ -8,12 +8,14 @@ const AddReviewForm = ({ placeId }) => {
   const [reviewName, setReviewName] = useState("");
   const [reviewDescription, setReviewDescription] = useState("");
   const [reviewRating, setReviewRating] = useState(1);
+  const [isReviewActive, setIsReviewActive] = useState(false);
   const [reviewFeatures, setReviewFeatures] = useState([]); // array of String
-
   const onChangeFeature = (event) => {
     const features = new FormData(event.target.form).getAll("feature") ?? [];
     setReviewFeatures(features);
   };
+
+  const formShow = () => setIsReviewActive(true);
 
   const handleReviewName = (event) => {
     setReviewName(event.target.value);
@@ -27,9 +29,9 @@ const AddReviewForm = ({ placeId }) => {
   };
 
   // const handleReviewRating = (event) => {
-  const handleReviewRating = (event) => {
-    setReviewRating(parseInt(event.target.value));
-  };
+  // const handleReviewRating = (event) => {
+  //   setReviewRating(parseInt(event.target.value));
+  // };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -50,7 +52,7 @@ const AddReviewForm = ({ placeId }) => {
     setReviewName("");
     setReviewTitle("");
     setReviewDescription("");
-    setReviewRating(1);
+    setReviewRating(0);
     setReviewFeatures([]);
   };
 
@@ -58,9 +60,14 @@ const AddReviewForm = ({ placeId }) => {
   const enabled =
     reviewTitle.length > 0 && reviewDescription.length > 0 && reviewRating;
 
+  if (!isReviewActive)
+    return (
+      <button className="submitButton" onClick={formShow}>
+        Add New Review
+      </button>
+    );
   return (
     <div className="create-review-container">
-      {/* <h2 className="review-header">Reviews</h2> */}
       <form className="review-form" onSubmit={handleFormSubmit}>
         <div className="name-title-description">
           <label>Name:</label>
@@ -125,7 +132,6 @@ const AddReviewForm = ({ placeId }) => {
         <button className="submitButton" type="Submit" disabled={!enabled}>
           Submit
         </button>
-     
       </form>
     </div>
   );
