@@ -5,10 +5,16 @@ import "./Map.css";
 
 // React component Reviews - displays all reviews on screen that it receives
 function Reviews({ reviews, place }) {
-  if (!reviews) return <div>reviews are loading</div>;
-
+  if (!reviews) return <div>There are no reviews</div>
+  
+  
   if (!reviews.length)
-    return <div className="review-message">there are no reviews</div>;
+    return  (
+    <div className="review-message">
+      <h3>There are no reviews for addplace yet. Add review here!</h3>
+      <button className="reviews-button" type="Submit">Add Review</button>
+    </div>
+    )
 
   return (
     <ul className="reviews-list">
@@ -29,6 +35,8 @@ function Reviews({ reviews, place }) {
     </ul>
   );
 }
+
+{/* <button className="reviews-button" type="Submit">Submit</button> */}
 
 export default function PlaceDetails({ place }) {
   const [reviews, setReviews] = useState([]);

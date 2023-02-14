@@ -62,27 +62,29 @@ const AddReviewForm = ({ placeId }) => {
     <div className="create-review-container">
       {/* <h2 className="review-header">Reviews</h2> */}
       <form className="review-form" onSubmit={handleFormSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          placeholder="Enter name"
-          value={reviewName}
-          onChange={handleReviewName}
-        />
-        <label>Title:</label>
-        <input
-          type="text"
-          placeholder="Enter a title"
-          value={reviewTitle}
-          onChange={handleReviewTitle}
-        />
-        <label>Description:</label>
-        <input
-          type="text"
-          placeholder="Enter Review"
-          value={reviewDescription}
-          onChange={handleReviewDescription}
-        />
+        <div className="name-title-description">
+          <label>Name:</label>
+          <input
+            type="text"
+            placeholder="Enter name"
+            value={reviewName}
+            onChange={handleReviewName}
+          />
+          <label>Title:</label>
+          <input
+            type="text"
+            placeholder="Enter a title"
+            value={reviewTitle}
+            onChange={handleReviewTitle}
+          />
+          <label>Description:</label>
+          <input
+            type="text"
+            placeholder="Enter Review"
+            value={reviewDescription}
+            onChange={handleReviewDescription}
+          />
+        </div>
         <div className="star-rating">
           {[...Array(5)].map((star, index) => {
             index += 1;
@@ -98,7 +100,6 @@ const AddReviewForm = ({ placeId }) => {
             );
           })}
         </div>
-     
         <div className="accessibility-checklist">
           <h2 className="checkbox-heading">Accessibility Features:</h2>
           <ul className="features-list">
@@ -131,8 +132,8 @@ const AddReviewForm = ({ placeId }) => {
 
 export default AddReviewForm;
 
-
-   {/* <div className="rating">
+{
+  /* <div className="rating">
           {
             [1, 2, 3, 4, 5].map(i => {
               return (
@@ -148,14 +149,19 @@ export default AddReviewForm;
                 </label>
                 )
               })
-            } */}
-        {/* </div> */}
+            } */
+}
+{
+  /* </div> */
+}
 
-        {/* // <label>Rating:</label>
+{
+  /* // <label>Rating:</label>
         // <select value={reviewRating} onChange={handleReviewRating}>
         //   <option value="1">🦖</option>
         //   <option value="2">🦖🦖</option>
         //   <option value="3">🦖🦖🦖</option>
         //   <option value="4">🦖🦖🦖🦖</option>
         //   <option value="5">🦖🦖🦖🦖🦖</option>
-        // </select> */}
+        // </select> */
+}
