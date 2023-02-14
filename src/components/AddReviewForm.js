@@ -125,6 +125,7 @@ const AddReviewForm = ({ placeId }) => {
         <button className="submitButton" type="Submit" disabled={!enabled}>
           Submit
         </button>
+     
       </form>
     </div>
   );
