@@ -6,7 +6,8 @@ import Navbar from "./Navbar";
 import Footer from "./components/Footer";
 import PlaceDetails from "./components/PlaceDetails";
 import "./Navbar.css";
-
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 function App() {
   const [selectedPlace, setSelectedPlace] = useState(null);
 
@@ -24,6 +25,7 @@ function App() {
           <Map onMarkerClick={onMarkerClick} />
           <PlaceDetails place={selectedPlace} />
         </div>
+        <Register />
       <div className="footer-container">
         <Footer />
       </div>

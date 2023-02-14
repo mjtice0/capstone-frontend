@@ -1,19 +1,48 @@
-import React from "react";
+import { useState, useRef } from "react";
+import axios from "axios";
 
 export default function Register() {
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [loginFailed, setLoginFailed] = useState(false);
+
+  // const [showRegister, setShowRegister] = useState(false);
+  // const [showLogin, setShowLogin] = useState(false);
+
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleRegisterSubmit = async(event) => {
+    event.preventDefault();
+    const newUser = {
+      username:nameRef.current.value,
+      email:emailRef.current.value,
+      password:passwordRef.current.value,
+    };
+    try {
+      await axios.post("/users/register", newUser);
+      setLoginFailed(false);
+      setLoginSuccess(true);
+    } catch (err) {
+      setLoginFailed(true);
+    }
+  };
+
   return (
-    <div className="reg-container">
+    <div className="registerContainer">
       <h1>User Registration</h1>
-      <form>
-        <label clasName="label">Name</label>
-        <input className="input" value="name" type="text" />
-
-        <label className="label">Email</label>
-        <input className="input" value="name" type="email" />
-
-        <label clasName="label">Passwrod</label>
-        <input className="input" value="name" type="password" />
+      <form onSubmit={handleRegisterSubmit}>
+        <input type="text" placeholder="username" ref={nameRef} />
+        <input type="email" placeholder="email" ref={emailRef}/>
+        <input type="password" placeholder="password" ref={passwordRef} />
+        <button className="registerButton">Register</button>
+        {loginSuccess && (
+        <span className="success">Login was successful!</span>
+        )} {loginFailed &&
+        <span className="failure">Login failed. Something went wrong</span>
+        }
       </form>
+      <button className="cancel">Cancel</button>
     </div>
   );
 }

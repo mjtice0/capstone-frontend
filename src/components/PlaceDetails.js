@@ -59,13 +59,14 @@ export default function PlaceDetails({ place }) {
 
   return (
       <div className="reviews-container">
+         <div className="reivews-form">
+          <AddReviewForm placeId={place?.placeId} />
+        </div>
         <div className="show-review">
           <Reviews reviews={reviews} />
         </div>
 
-        <div className="reivews-form">
-          <AddReviewForm placeId={place?.placeId} />
-        </div>
+       
       </div>
   );
 }
