@@ -24,14 +24,10 @@ function App() {
           <Map onMarkerClick={onMarkerClick} />
           <PlaceDetails place={selectedPlace} />
         </div>
-        <Routes> 
-          {/* <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} /> */}
-         </Routes>
       <div className="footer-container">
         <Footer />
-        </div>
       </div>
+    </div>
     </>
   );
 }
