@@ -7,11 +7,11 @@ const AddReviewForm = ({ placeId }) => {
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewName, setReviewName] = useState("");
   const [reviewDescription, setReviewDescription] = useState("");
-  const [reviewRating, setReviewRating] = useState(-1);
+  const [reviewRating, setReviewRating] = useState(1);
   const [reviewFeatures, setReviewFeatures] = useState([]); // array of String
 
   const onChangeFeature = (event) => {
-    const features = new FormData(event.target.form).getAll("feature");
+    const features = new FormData(event.target.form).getAll("feature") ?? [];
     setReviewFeatures(features);
   };
 
@@ -35,7 +35,7 @@ const AddReviewForm = ({ placeId }) => {
     console.log("form submitted!");
 
     const featuresValue = reviewFeatures.sort().join(", ");
-    console.log(featuresValue);
+    console.log({ featuresValue });
 
     const newReview = {
       name: reviewName,
@@ -43,15 +43,13 @@ const AddReviewForm = ({ placeId }) => {
       description: reviewDescription,
       rating: reviewRating,
       features: featuresValue,
-
-      // checkboxes: checkedState,
     };
 
     DataManager.addReview(placeId, newReview);
     setReviewName("");
     setReviewTitle("");
     setReviewDescription("");
-    setReviewRating(-1);
+    setReviewRating(1);
     setReviewFeatures([]);
   };
 

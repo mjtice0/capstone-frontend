@@ -13,14 +13,14 @@ function Reviews({ reviews }) {
   return (
     <ul>
       {reviews.map((review, i) => {
-        const { name, title, description, rating, features } = review;
+        const { name, title, description, rating } = review;
         return (
           <li key={i}>
             <h2>{name}</h2>
             <h3>{title}</h3>
             <h3>{description}</h3>
             <p>{rating}</p>
-            <p>{features}</p>
+           
           </li>
         );
       })}
@@ -59,22 +59,4 @@ export default function PlaceDetails({ place }) {
   );
 }
 
-//add new review function is call
 
-//make request to backend to get reviews associated with a place using place id
-//show the reviews results
-//if there are no reviews than only show the add review button
-
-// useEffect(() => {
-//   console.log("new place selected", { place });
-// }, [place]);
-
-// const getReviewsByPlaceID = (placeId) => {
-//   axios
-//     .get(`http://localhost:8800/reviews?placeId=${placeId}`)
-//     .then((response) => response.data)
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// };
-// getReviewsByPlaceID();
