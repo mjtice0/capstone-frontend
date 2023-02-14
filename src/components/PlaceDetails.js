@@ -57,9 +57,6 @@ export default function PlaceDetails({ place }) {
     });
   }, [place]);
 
-  //post new review to DB
-  //show reviews results for a place
-  //if there are not places than show only review button
   return (
       <div className="reviews-container">
         <div className="show-review">

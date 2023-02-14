@@ -88,17 +88,3 @@ export default {
 };
 
 
-//get all reviews
-// useEffect(() => {
-//   const getReviews = async () => {
-//     try {
-//       const review = await axios.get("http://localhost:8800/api/reviews");
-//       // setReview(response.data)
-//       console.log(review.data);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-//   getReviews();
-// }, []);
-

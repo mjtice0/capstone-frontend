@@ -23,7 +23,7 @@ const searchBoxStyle = {
   height: `55px`,
   borderRadius: `10px`,
   fontSize: `20px`,
-  fontWeight: 'bold',
+  fontWeight: "bold",
   margin: "center",
   position: "absolute",
   top: "30px",
@@ -81,7 +81,6 @@ export default function Map({ onMarkerClick }) {
     );
   };
 
-  // https://react-google-maps-api-docs.netlify.app/#standalonesearchbox
   // This callback is called when the searchBox instance has loaded.
   const onLoadSearchBox = (searchBoxInstance) => {
     setSearchBox(searchBoxInstance);
@@ -92,29 +91,29 @@ export default function Map({ onMarkerClick }) {
   return (
     <div className="map-container">
       <div className="map">
-      <GoogleMap
-        zoom={12}
-        center={mapCenter}
-        mapContainerStyle={mapContainerStyle}
-        onLoad={(map) => setMap(map)}
-      >
-        <>
-        <div className="search-box">
-          {/* <i class="fa-solid fa-magnifying-glass"></i> */}
-          <StandaloneSearchBox
-            onPlacesChanged={onPlacesChanged}
-            onLoad={onLoadSearchBox}
-          >
-            <input
-              type="search"
-              className="searchbox"
-              placeholder="Search for Place"
-              style={searchBoxStyle} 
-            />
-          </StandaloneSearchBox>
-        </div>  
-        </>
-      </GoogleMap>
+        <GoogleMap
+          zoom={12}
+          center={mapCenter}
+          mapContainerStyle={mapContainerStyle}
+          onLoad={(map) => setMap(map)}
+        >
+          <>
+            <div className="search-box">
+              {/* <i class="fa-solid fa-magnifying-glass"></i> */}
+              <StandaloneSearchBox
+                onPlacesChanged={onPlacesChanged}
+                onLoad={onLoadSearchBox}
+              >
+                <input
+                  type="search"
+                  className="searchbox"
+                  placeholder="Search for Place"
+                  style={searchBoxStyle}
+                />
+              </StandaloneSearchBox>
+            </div>
+          </>
+        </GoogleMap>
       </div>
     </div>
   );
