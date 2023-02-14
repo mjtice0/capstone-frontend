@@ -13,7 +13,7 @@ function Reviews({ reviews, place }) {
   return (
     <ul className="reviews-list">
       {reviews.map((review, i) => {
-        const { name, title, description, rating } = review;
+        const { name, title, description, rating, features } = review;
         return (
           <li key={i}>
             {/* <h2> Place: {place.name} </h2> */}
@@ -21,7 +21,8 @@ function Reviews({ reviews, place }) {
             <h3>Title: {title}</h3>
             <h3>Review: {description}</h3>
             <h3>Rating: {rating}</h3>
-           
+            <h3>Features: {features}</h3>
+
           </li>
         );
       })}

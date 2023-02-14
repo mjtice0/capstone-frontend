@@ -26,6 +26,7 @@ const AddReviewForm = ({ placeId }) => {
     setReviewDescription(event.target.value);
   };
 
+  // const handleReviewRating = (event) => {
   const handleReviewRating = (event) => {
     setReviewRating(parseInt(event.target.value));
   };
@@ -57,12 +58,6 @@ const AddReviewForm = ({ placeId }) => {
   const enabled =
     reviewTitle.length > 0 && reviewDescription.length > 0 && reviewRating;
 
-
-  
-
-
-
-
   return (
     <div className="create-review-container">
       {/* <h2 className="review-header">Reviews</h2> */}
@@ -88,46 +83,22 @@ const AddReviewForm = ({ placeId }) => {
           value={reviewDescription}
           onChange={handleReviewDescription}
         />
-        <div className="rating">
-          {
-            [1, 2, 3, 4, 5].map(i => {
-              return (
-                <label key={i}>
-                  <input
-                    type="radio"
-                    name="rating"
-                    value={i}
-                    checked={i === reviewRating}
-                    onChange={e => setReviewRating(parseInt(e.target.value))}
-                  />
-                    {i}
-                </label>
-                )
-              })
-            }
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* // <label>Rating:</label>
-        // <select value={reviewRating} onChange={handleReviewRating}>
-        //   <option value="1">🦖</option>
-        //   <option value="2">🦖🦖</option>
-        //   <option value="3">🦖🦖🦖</option>
-        //   <option value="4">🦖🦖🦖🦖</option>
-        //   <option value="5">🦖🦖🦖🦖🦖</option>
-        // </select> */}
+        <div className="star-rating">
+          {[...Array(5)].map((star, index) => {
+            index += 1;
+            return (
+              <button
+                type="button"
+                key={index}
+                className={index <= reviewRating ? "on" : "off"}
+                onClick={() => setReviewRating(index)}
+              >
+                <span className="star">&#9733;</span>
+              </button>
+            );
+          })}
+        </div>
+     
         <div className="accessibility-checklist">
           <h2 className="checkbox-heading">Accessibility Features:</h2>
           <ul className="features-list">
@@ -159,3 +130,32 @@ const AddReviewForm = ({ placeId }) => {
 };
 
 export default AddReviewForm;
+
+
+   {/* <div className="rating">
+          {
+            [1, 2, 3, 4, 5].map(i => {
+              return (
+                <label key={i}>
+                  <button
+                    type="button"
+                    name="rating"
+                    value={i}
+                    checked={i === reviewRating}
+                    onClick={e => setReviewRating(parseInt(e.target.value))}
+                  />
+                    {i}
+                </label>
+                )
+              })
+            } */}
+        {/* </div> */}
+
+        {/* // <label>Rating:</label>
+        // <select value={reviewRating} onChange={handleReviewRating}>
+        //   <option value="1">🦖</option>
+        //   <option value="2">🦖🦖</option>
+        //   <option value="3">🦖🦖🦖</option>
+        //   <option value="4">🦖🦖🦖🦖</option>
+        //   <option value="5">🦖🦖🦖🦖🦖</option>
+        // </select> */}

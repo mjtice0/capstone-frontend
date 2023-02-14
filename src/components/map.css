@@ -61,7 +61,6 @@
    font-size: 16px;
 }
 
- 
  .accessibility-checklist {
    list-style: none;
    padding: 2px;
@@ -71,7 +70,6 @@
    align-content: center;
    flex-direction: row;
  }
-
 
  .features-list li {
   flex-direction: row;
@@ -96,8 +94,21 @@
   font-size: 22px;
  }
 
-/* .review-message {
-  flex-direction: column;
-  align-content: flex-start;
+/* button for setting the stars (rating) */
+ button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  outline: none;
+  cursor: pointer;
+  height: 60px;
+  width: 40px;
+  transition-duration: 0.4s;
 }
- */
+.on {
+  color: yellow;
+}
+.off {
+  color: white;
+}
+
