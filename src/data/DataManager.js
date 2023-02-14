@@ -31,20 +31,7 @@ function getReviews(placeId) {
       console.error(error);
       throw error;
     });
-  // const data = tempReadData()
-  // return Promise.resolve(data.places[placeId].reviews)
 }
-
-// TEMP
-// console.clear();
-// addReview("ChIJCXdw0w9nbIcRbdG3kJPQD7w", {
-//   name: "name",
-//   title: "title",
-//   description: "desc",
-//   rating: 5,
-//   features: "noise",
-  
-// });
 
 function addReview(placeId, reviewData) {
   console.log("DataManager.addReview()", { placeId, reviewData });

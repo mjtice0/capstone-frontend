@@ -28,11 +28,6 @@ const AddReviewForm = ({ placeId }) => {
     setReviewDescription(event.target.value);
   };
 
-  // const handleReviewRating = (event) => {
-  // const handleReviewRating = (event) => {
-  //   setReviewRating(parseInt(event.target.value));
-  // };
-
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log("form submitted!");
@@ -56,7 +51,6 @@ const AddReviewForm = ({ placeId }) => {
     setReviewFeatures([]);
   };
 
-  //enable submit review button when there are characters in description and rating
   const enabled =
     reviewTitle.length > 0 && reviewDescription.length > 0 && reviewRating;
 
