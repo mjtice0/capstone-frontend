@@ -20,7 +20,6 @@
 .reviews-container {
   margin-top: 40px;
   width:100%;
-  /* background-color: green; */
   display: flex; 
   flex-direction: column;
   justify-content: center;
@@ -40,6 +39,14 @@
   max-height: 100%; */
   border: 2px solid black;
 }
+
+.reviews-list {
+  padding: 15px;
+  width: 50vh;
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+ }
 
 .create-review-container {
    display: flex;
@@ -72,6 +79,8 @@
    padding: 2px;
    margin-right: 10px;
  }
+
+ 
 
  .submitButton{
   justify-content: center;

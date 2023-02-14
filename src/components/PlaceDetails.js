@@ -4,22 +4,23 @@ import DataManager from "../data/DataManager";
 import "./Map.css";
 
 // React component Reviews - displays all reviews on screen that it receives
-function Reviews({ reviews }) {
+function Reviews({ reviews, place }) {
   if (!reviews) return <div>reviews are loading</div>;
 
   if (!reviews.length)
     return <div className="review-message">there are no reviews</div>;
 
   return (
-    <ul>
+    <ul className="reviews-list">
       {reviews.map((review, i) => {
         const { name, title, description, rating } = review;
         return (
           <li key={i}>
-            <h2>{name}</h2>
-            <h3>{title}</h3>
-            <h3>{description}</h3>
-            <p>{rating}</p>
+            {/* <h2> Place: {place.name} </h2> */}
+            <h3>Name: {name}</h3>
+            <h3>Title: {title}</h3>
+            <h3>Review: {description}</h3>
+            <h3>Rating: {rating}</h3>
            
           </li>
         );
@@ -49,7 +50,6 @@ export default function PlaceDetails({ place }) {
   return (
     <div className="reviews-container">
         <div className="show-reviews">
-          <h1>REVIEWS</h1>
           <Reviews reviews={reviews} />
         </div>
         <div className="reivews-form">
