@@ -1,4 +1,8 @@
 
+* {
+    box-sizing: border-box;
+}
+
 .navbar {
     display: flex;
     padding: 20px;
@@ -10,12 +14,6 @@
     height: 160px;
     position: sticky;
     top: 0;
-}
-
-.site-heading {
-    color: black;
-    font-size: 26px;
-    font-weight: bold;
 }
 
 li {
@@ -39,21 +37,30 @@ a:active {
     color:  rgb(109, 193, 78);
   }
 
-  /* a:visited {
-    color:  rgb(109, 193, 78);
-    
-  } */
+  a:visited {
+    color: rgb(57, 57, 211);
+
+  }
 
 a:hover { 
     color: rgb(109, 193, 78); 
-    background-color: #DBE0EF;
+    background-color: white;
     border-radius: 10%;
     font-weight: bold;
 }
 
 .logo {
-    width: 150px;
-    height: 130px;
-    border-radius: 10%;
+    height: 140px;
+    width: 160px;
+    display: flex;
+    border-radius: 20%;
+    padding: 2px;
+    
 }
+
+/* .logo {
+    width: 100px;
+    height: 20px;
+    border-radius: 10%;
+} */
 

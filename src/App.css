@@ -18,7 +18,7 @@
   align-items: center;
   flex-direction: row;
   min-height: 120px;
+  font-size: 18px;
   background-color: black;
-  margin-top: auto;
   color: white;
 }

@@ -1,35 +1,19 @@
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import "./Navbar.css";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import logo from "./images/accessibilityLogo.png";
 
-const Navbar = () => {
+export default function Navbar() {
   return (
-  
     <nav className="navbar">
-      <Link to="/" className="site-heading">
-        <img src={logo} alt="accessibility-logo" className="logo"/>
-      </Link>
-      <ul>
-
-        <CustomLink to="/login">Login</CustomLink>
-        <CustomLink to="/register">Register</CustomLink>
+      <div className="navlogo">
+        <img src={logo} alt="Logo" className="logo" />
+      </div>
+      <ul className="navbar-links">
+        <li><a href="./pages/Login.js">Login</a></li>
+        <li><a href="./pages/Register">Register</a></li>
       </ul>
-  
     </nav>
-  );
-};
-
-function CustomLink({ to, children, ...props }) {
-  const resolvedPath = useResolvedPath(to);
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
-  //set link in navbar to active, rerender only heading
-  return (
-    <li className={isActive ? "active" : ""}>
-      <Link to={to} {...props}>
-        {children}
-      </Link>
-    </li>
   );
 }
 
-export default Navbar;
