@@ -39,7 +39,7 @@ export default function Register({setShowRegister}) {
         <span className="failure">Login failed. Something went wrong</span>
         }
       </form>
-      <button className="cancel" onClick={()=>setShowRegister(false)}>Cancel</button>
+      <button className="cancelButton" onClick={()=>setShowRegister(false)}>Cancel</button>
     </div>
   );
 }

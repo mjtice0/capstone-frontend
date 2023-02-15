@@ -11,8 +11,8 @@ import "./Map.css";
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "70vw",
-  height: "60vh",
-  border: `3px solid black`,
+  height: "64vh",
+  border: `3px solid white`,
 };
 
 const searchBoxStyle = {
@@ -27,7 +27,7 @@ const searchBoxStyle = {
   margin: "center",
   position: "absolute",
   top: "30px",
-  marginLeft: "30%",
+  marginLeft: "35%",
 };
 
 export default function Map({ onMarkerClick }) {
@@ -86,12 +86,6 @@ export default function Map({ onMarkerClick }) {
     setSearchBox(searchBoxInstance);
   };
 
-  const handleApiLoaded = (map, maps) => {
-    // Set the z-index of the map element
-    const mapEl = map.getDiv();
-    mapEl.style.zIndex = 1;
-  };
-
   if (!isLoaded) return "Loading Maps";
 
   return (
@@ -102,7 +96,6 @@ export default function Map({ onMarkerClick }) {
           center={mapCenter}
           mapContainerStyle={mapContainerStyle}
           onLoad={(map) => setMap(map)}
-          onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         >
           <>
             <div className="search-box">

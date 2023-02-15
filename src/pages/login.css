@@ -23,12 +23,25 @@
     border-radius:5px;
     cursor: pointer;
     width: 100px;
+    padding: 5px;
     height: 35px;
     background-color: black;
     color: white;
     margin: 15px;
 }
 
+.cancelLoginButton {
+    border: none;
+    border-radius:5px;
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    margin: 15px;
+
+}
 .success {
     color: green;
     font-size: 14px;
@@ -38,7 +51,7 @@
 .error {
     color: red;
     font-size: 14px;
-    position: absolute
+    text-align: center;
 }
 
 .cancel {

@@ -6,20 +6,21 @@ import DataManager from "../data/DataManager";
 const AddReviewForm = ({ placeId }) => {
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewName, setReviewName] = useState("");
-  const [reviewDescription, setReviewDescription] = useState("");
-  const [reviewRating, setReviewRating] = useState(1);
   const [isReviewActive, setIsReviewActive] = useState(false);
+  const [reviewDescription, setReviewDescription] = useState("");
+  const [reviewRating, setReviewRating] = useState(-1);
   const [reviewFeatures, setReviewFeatures] = useState([]); // array of String
+
   const onChangeFeature = (event) => {
-    const features = new FormData(event.target.form).getAll("feature") ?? [];
+    const features = new FormData(event.target.form).getAll("feature");
     setReviewFeatures(features);
   };
-
-  const formShow = () => setIsReviewActive(true);
 
   const handleReviewName = (event) => {
     setReviewName(event.target.value);
   };
+
+  const formShow = () => setIsReviewActive(true);
 
   const handleReviewTitle = (event) => {
     setReviewTitle(event.target.value);
@@ -28,12 +29,16 @@ const AddReviewForm = ({ placeId }) => {
     setReviewDescription(event.target.value);
   };
 
+  // const handleReviewRating = (event) => {
+  //   setReviewRating(parseInt(event.target.value));
+  // };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log("form submitted!");
 
     const featuresValue = reviewFeatures.sort().join(", ");
-    console.log({ featuresValue });
+    console.log(featuresValue);
 
     const newReview = {
       name: reviewName,
@@ -41,13 +46,15 @@ const AddReviewForm = ({ placeId }) => {
       description: reviewDescription,
       rating: reviewRating,
       features: featuresValue,
+
+      // checkboxes: checkedState,
     };
 
     DataManager.addReview(placeId, newReview);
     setReviewName("");
     setReviewTitle("");
     setReviewDescription("");
-    setReviewRating(0);
+    setReviewRating(-1);
     setReviewFeatures([]);
   };
 
@@ -56,7 +63,6 @@ const AddReviewForm = ({ placeId }) => {
 
   if (!isReviewActive)
     return (
-    
       <button className="addReviewButton" onClick={formShow}>
         Add New Review
       </button>
@@ -124,6 +130,7 @@ const AddReviewForm = ({ placeId }) => {
             })}
           </ul>
         </div>
+      
         <button className="submitButton" type="Submit" disabled={!enabled}>
           Submit
         </button>
@@ -133,4 +140,3 @@ const AddReviewForm = ({ placeId }) => {
 };
 
 export default AddReviewForm;
-

@@ -1,6 +1,12 @@
 export const features = [
   {
-    name: "Music",
+    name: ":Loud Music",
+  },
+  {
+    name: ":Quiet Music",
+  },
+  {
+    name: ":No Music",
   },
   {
     name: "Dedicated Quiet Space",
@@ -9,7 +15,7 @@ export const features = [
     name: "Outdoor Area",
   },
   {
-    name: "Headphones",
+    name: "Sensory accomodations available",
   },
   {
     name: "Dedicated Quiet Hours",
@@ -19,7 +25,6 @@ export const features = [
   },
   {
     name: "Fluorescent Lighting",
-    
   },
   {
     name: "Natural Ligthing",
@@ -41,5 +46,11 @@ export const features = [
   },
   {
     name: "Pets Allowed",
+  },
+  {
+    name: "Kitchen separate from seating area",
+  },
+  {
+    name: "Child-friendly",
   },
 ];

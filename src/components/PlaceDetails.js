@@ -5,36 +5,22 @@ import "./Map.css";
 
 // React component Reviews - displays all reviews on screen that it receives
 function Reviews({ reviews, place }) {
-  // const [showForm, setShowForm] = useState(false);
-
-  // const handleAddReviewClick = () => {
-  //   setShowForm(true);
-  // };
-
-  // if (!reviews) return <div>There are no reviews</div>;
-
   if (!reviews.length)
     return (
-      <div className="review-message">
-        <h3>There are no reviews yet. Add review here!</h3>
-        {/* <button onClick={handleAddReviewClick} className="reviews-button" type="Submit">
-          Add Review
-        </button> */}
-      </div>
+      <h3 className="reviewHeading"> 😔 Sorry, there are no reviews yet.</h3>
     );
 
-  //add place name to render when a place is selected
   return (
     <ul className="reviews-list">
       {reviews.map((review, i) => {
         const { name, title, description, rating, features } = review;
         return (
-          <li key={i}>
-            <h3>Name: {name}</h3>
-            <h3>Title: {title}</h3>
-            <h3>Review: {description}</h3>
-            <h3>Rating: {rating}</h3>
-            <h3>Features: {features}</h3>
+          <li key={i} className="review-item">
+            <h3 className="review-title">Name: {name}</h3>
+            <h3 className="review-title">Title: {title}</h3>
+            <h3 className="review-title">Review: {description}</h3>
+            <h3 className="review-title">Rating: {"★".repeat(rating)}</h3>
+            <h3 className="review-title">Features: {features}</h3>
           </li>
         );
       })}
@@ -45,7 +31,6 @@ function Reviews({ reviews, place }) {
 export default function PlaceDetails({ place }) {
   const [reviews, setReviews] = useState([]);
 
-  // new place provided. fetch reviews from DB and setReviews()
   useEffect(() => {
     if (!place) return;
 
@@ -58,14 +43,14 @@ export default function PlaceDetails({ place }) {
   }, [place]);
 
   return (
-      <div className="reviews-container">
-        <div className="reviews">
+    <div className="reviews-container">
+      <div className="reviews">
+        {/* <h2>Reviews for {place.name}</h2> */}
         <Reviews reviews={reviews} />
-        </div>
-        <div className="reivews-form">
-          <AddReviewForm placeId={place?.placeId} /> 
-        </div>
       </div>
-  
+      <div className="reivews-form">
+        <AddReviewForm placeId={place?.placeId} />
+      </div>
+    </div>
   );
 }

@@ -6,9 +6,9 @@
     position: fixed;
     margin: auto;
     display: flex;
-    width: 300px;
-    height: 250px;
-    padding: 20px;
+    width: 250px;
+    height: 300px;
+    padding: 18px;
     top: 0;
     bottom: 0;
     left: 0;
@@ -16,8 +16,11 @@
     margin: auto;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+
 }
+.rgtButton, .cancelButton {
+    margin-top: 10px;
+  }
 
 .registerButton {
     border: none;
@@ -30,6 +33,22 @@
     margin: 15px;
 }
 
+.cancelButton {
+    border: none;
+    border-radius:5px;
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    background-color: black;
+    color: white;
+    margin: 15px;
+    text-align: center;
+    align-items: center;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
 .success {
     color: green;
     font-size: 14px;
@@ -37,17 +56,19 @@
 }
 
 .failure {
+    position: absolute;
     color: red;
     font-size: 14px;
     text-align: center;
+   
 }
 
-.cancel {
+/* .cancel {
     position: absolute;
     top: 5px;
     right: 5px;
     cursor: pointer;
-}
+} */
 
 .rgtButton {
     border: none;

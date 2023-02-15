@@ -41,6 +41,7 @@ function addReview(placeId, reviewData) {
       title: reviewData.title,
       description: reviewData.description,
       rating: reviewData.rating,
+      features: reviewData.features
 
     })
     .then((response) => {

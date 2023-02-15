@@ -1,4 +1,4 @@
-/* header div */
+
 .map-container {
   width: 100%;
   margin-top: 40px;
@@ -23,84 +23,67 @@
   justify-content: space-evenly;
   align-items: center;
   margin: 15px; 
+  margin-top: 40px;;
 }
 
 .reviews {
   border: 2px solid white;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   display: flex;
-  height: 50vh;
-  width: 80vh;
+  height: 60vh;
+  width: 75vh;
 }
 
-.reviews-list {
-  padding: 15px;
-  width: 70vh;
-  display: flex;
-  flex-direction: row;
-  height: 50vh;
- } 
+ .review-item {
+  border: 1px solid black;
+  padding: 12px;
+}
 
+.review-title {
+  font-size: 18px;
+}
 
  /* container for form with accessibility features */
 .create-review-container {
-   /* display: flex; */
-   margin-top: 40px;
-   margin: 20px;
-   /* flex-direction: row; */
-   max-width: 500px;
-   /* justify-content: center;
-   align-items: center;  */
-   padding: 15px;
+   margin: 16px;
+   max-width: 600px;
+   width: 500px;
+   padding: 12px;
    border: 2px solid white; 
    border-radius: 5%;
-   font-size: 16px;
-}
+   font-size: 18px;
+  }
 
  .accessibility-checklist {
-   list-style: none;
-   padding: 10px;
-   /* display: flex; */
-   /* flex-direction: column; */
+   padding: 12x;
  }
-
 
  .features-list li {
-  /* flex-direction: row; */
-   margin-bottom: 0.5rem;
+   margin-bottom: 0.2rem;
    padding: 2px;
-   margin-right: 10px;
-   font-size: 16px;
+   font-size: 18px;
    list-style: none;
  }
-/* 
- .reviews-form {
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 15px;
- } */
- 
 
 .name-title-description {
   display: flex;
   flex-direction: column;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   padding: 2px;
 }
-.review-message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+
 .checkbox-heading {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
+.reviewHeading {
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+}
 
 /* buttons styling, add review and submit review css */
  .submitButton{
@@ -109,8 +92,8 @@
   margin-left: 5em;
   color: white;
   background-color: black;
-  height: 100 px;
-  width: 200px;
+  height: 80 px;
+  width: 170px;
   font-size: 22px;
  }
 
@@ -141,8 +124,8 @@
   margin-bottom:1rem;
   color: white;
   background-color: black;
-  height: 100 px;
-  width: 200px;
+  height: 80 px;
+  width: 180px;
   display: block;
   margin: 0 auto;
   text-align: center;

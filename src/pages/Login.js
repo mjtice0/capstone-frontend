@@ -6,6 +6,7 @@ import"./register.css";
 
 export default function Login({ setShowLogin, setCurrentUsername,myStorage }) {
   const [error, setError] = useState(false);
+  // const [showLogin, setShowLogin] = useState(false);
   const usernameRef = useRef();
   const passwordRef = useRef();
 
@@ -40,7 +41,7 @@ export default function Login({ setShowLogin, setCurrentUsername,myStorage }) {
         </button>
         {error && <span className="failure">Something went wrong!</span>}
       </form>
-      {/* <Cancel className="loginCancel" onClick={() => setShowLogin(false)} /> */}
+      <button className="cancelLoginButton" onClick={()=>setShowLogin(false)}>Cancel</button>
     </div>
   );
 }
