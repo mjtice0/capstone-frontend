@@ -3,7 +3,7 @@
     width: 300px;
     height: 200px;
     z-Index: 9999;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     background-color: white;
     position: fixed;
@@ -15,31 +15,33 @@
     display: flex;
     flex-direction: column;
     align-items: center; 
-    justify-content: space-between;
+    
 }
 
 .loginBtn {
     border: none;
     border-radius:5px;
     cursor: pointer;
-    width: 100px;
     padding: 5px;
-    height: 35px;
+    width: 90px;
+    height: 34px;
     background-color: black;
     color: white;
-    margin: 15px;
+    margin: 10px;
+    margin-left: 94px;
 }
 
 .cancelLoginButton {
     border: none;
     border-radius:5px;
     cursor: pointer;
-    width: 100px;
-    height: 35px;
+    width: 90px;
+    height: 34px;
     padding: 5px;
     background-color: black;
     color: white;
     margin: 15px;
+    margin-bottom: 60px;
 
 }
 .success {
@@ -59,4 +61,17 @@
     top: 5px;
     right: 5px;
     cursor: pointer;
+}
+
+.cContainer {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-between;
+    
 }

@@ -18,9 +18,9 @@
     align-items: center;
 
 }
-.rgtButton, .cancelButton {
+/* .rgtButton, .cancelButton {
     margin-top: 10px;
-  }
+  } */
 
 .registerButton {
     border: none;
@@ -31,21 +31,23 @@
     background-color: white;
     color: black;
     margin: 15px;
+    
 }
 
 .cancelButton {
     border: none;
     border-radius:5px;
     cursor: pointer;
-    width: 100px;
-    height: 35px;
+    width: 90px;
+    height: 32px;
     background-color: black;
     color: white;
     margin: 15px;
-    text-align: center;
-    align-items: center;
-    top: 5px;
-    right: 5px;
+    margin-bottom: 50px;
+ 
+    /* top: 5px;
+    right: 5px; */
+    
     cursor: pointer;
 }
 
@@ -58,17 +60,10 @@
 .failure {
     position: absolute;
     color: red;
-    font-size: 14px;
-    text-align: center;
-   
+    font-size: 10px;   
 }
 
-/* .cancel {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-} */
+
 
 .rgtButton {
     border: none;
@@ -76,9 +71,11 @@
     cursor: pointer;
     background-color: black;
     color: white;
-    width: 100px;
-    height: 35px;
-    margin: 15px;
+    width: 90px;
+    height: 32px;
+    margin: 10px;
+    margin-left: 60px;
+
 }
   
 

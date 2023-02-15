@@ -28,7 +28,9 @@ export default function Login({ setShowLogin, setCurrentUsername, myStorage }) {
   };
 
   return (
+   
     <div className="loginContainer">
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <input type="username" placeholder="username" ref={usernameRef} />
         <input
@@ -42,9 +44,11 @@ export default function Login({ setShowLogin, setCurrentUsername, myStorage }) {
         </button>
         {error && <span className="failure">Something went wrong!</span>}
       </form>
+ 
       <button className="cancelLoginButton" onClick={() => setShowLogin(false)}>
         Cancel
       </button>
+  
     </div>
   );
 }
