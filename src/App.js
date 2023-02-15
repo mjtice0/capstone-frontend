@@ -24,7 +24,7 @@ function App() {
     <>
       {/* <div className="Nav-Container"> */}
         <Navbar />
-        {currentUser ? (
+        {/* {currentUser ? (
           <button className="logoutButton">Log out</button>
         ) : (
           <div className="buttons">
@@ -47,13 +47,15 @@ function App() {
           </div>
         )}
         {showRegister && <Register setShowRegister={setShowRegister} />}
-        {showLogin && <Login setShowLogin={setShowLogin} />}
-        {/* <div className="first-row"> */}
+        {showLogin && <Login setShowLogin={setShowLogin} />} */}
+      <div className="all-rows">
+        <div className="first-row">
           <Map onMarkerClick={onMarkerClick} />
-        {/* </div> */}
+        </div>
         <div className="second-row">
           <PlaceDetails place={selectedPlace} />
         </div>
+      </div>
       {/* </div> */}
     </>
   );
