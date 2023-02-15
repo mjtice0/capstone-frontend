@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import logo from "./images/accessibilityLogo.png";
 import { useState } from "react";
+import "./pages/login.css";
 
 export default function Navbar() {
 
@@ -33,7 +34,7 @@ export default function Navbar() {
       )}
       {showRegister && <Register setShowRegister={setShowRegister} />}
       {showLogin && <Login setShowLogin={setShowLogin} />}
-      {/* </ul> */}
+      
     </nav>
   );
 }

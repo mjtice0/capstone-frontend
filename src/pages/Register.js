@@ -6,9 +6,6 @@ export default function Register({setShowRegister}) {
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
 
-  // const [showRegister, setShowRegister] = useState(false);
-  // const [showLogin, setShowLogin] = useState(false);
-
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();

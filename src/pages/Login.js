@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useRef, useState } from "react";
 import "./login.css";
+import"./register.css";
 
 export default function Login({ setShowLogin, setCurrentUsername,myStorage }) {
   const [error, setError] = useState(false);
