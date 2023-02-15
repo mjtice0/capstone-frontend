@@ -8,8 +8,10 @@ const AddReviewForm = ({ placeId }) => {
   const [reviewName, setReviewName] = useState("");
   const [isReviewActive, setIsReviewActive] = useState(false);
   const [reviewDescription, setReviewDescription] = useState("");
-  const [reviewRating, setReviewRating] = useState(-1);
+  const [reviewRating, setReviewRating] = useState(1);
   const [reviewFeatures, setReviewFeatures] = useState([]); // array of String
+  
+  
 
   const onChangeFeature = (event) => {
     const features = new FormData(event.target.form).getAll("feature");
@@ -28,10 +30,6 @@ const AddReviewForm = ({ placeId }) => {
   const handleReviewDescription = (event) => {
     setReviewDescription(event.target.value);
   };
-
-  // const handleReviewRating = (event) => {
-  //   setReviewRating(parseInt(event.target.value));
-  // };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -54,7 +52,7 @@ const AddReviewForm = ({ placeId }) => {
     setReviewName("");
     setReviewTitle("");
     setReviewDescription("");
-    setReviewRating(-1);
+    setReviewRating(1);
     setReviewFeatures([]);
   };
 
