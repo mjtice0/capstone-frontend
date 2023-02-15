@@ -64,12 +64,14 @@
    /* flex-direction: column; */
  }
 
+
  .features-list li {
   /* flex-direction: row; */
    margin-bottom: 0.5rem;
    padding: 2px;
    margin-right: 10px;
    font-size: 16px;
+   list-style: none;
  }
 /* 
  .reviews-form {
@@ -112,20 +114,6 @@
   font-size: 22px;
  }
 
- .reviews-button {
-  justify-content: center;
-  border-radius: 10%;
-  align-items: center;
-  margin-top:1rem;
-  flex-direction: row;
-  margin-bottom:1rem;
-  color: white;
-  background-color: black;
-  height: 100 px;
-  width: 200px;
-  font-size: 22px;
- }
-
 /* button for setting the stars (rating) */
  button {
   background-color: transparent;
@@ -144,7 +132,6 @@
   color: white;
 }
 
-
 .addReviewButton {
   display: flex;
   flex-direction: row;
@@ -156,4 +143,8 @@
   background-color: black;
   height: 100 px;
   width: 200px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
+ 

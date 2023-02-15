@@ -86,6 +86,12 @@ export default function Map({ onMarkerClick }) {
     setSearchBox(searchBoxInstance);
   };
 
+  const handleApiLoaded = (map, maps) => {
+    // Set the z-index of the map element
+    const mapEl = map.getDiv();
+    mapEl.style.zIndex = 1;
+  };
+
   if (!isLoaded) return "Loading Maps";
 
   return (
@@ -96,6 +102,7 @@ export default function Map({ onMarkerClick }) {
           center={mapCenter}
           mapContainerStyle={mapContainerStyle}
           onLoad={(map) => setMap(map)}
+          onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         >
           <>
             <div className="search-box">

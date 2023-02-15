@@ -5,7 +5,6 @@ import"./register.css";
 export default function Register({setShowRegister}) {
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
-
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();

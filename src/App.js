@@ -22,32 +22,7 @@ function App() {
 
   return (
     <>
-      {/* <div className="Nav-Container"> */}
-        <Navbar />
-        {/* {currentUser ? (
-          <button className="logoutButton">Log out</button>
-        ) : (
-          <div className="buttons">
-            <button
-              className="loginButton"
-              onClick={() => {
-                setShowLogin(true);
-              }}
-            >
-              Login
-            </button>
-            <button
-              className="registerButton"
-              onClick={() => {
-                setShowRegister(true);
-              }}
-            >
-              Register
-            </button>
-          </div>
-        )}
-        {showRegister && <Register setShowRegister={setShowRegister} />}
-        {showLogin && <Login setShowLogin={setShowLogin} />} */}
+    <Navbar />
       <div className="all-rows">
         <div className="first-row">
           <Map onMarkerClick={onMarkerClick} />
@@ -56,7 +31,6 @@ function App() {
           <PlaceDetails place={selectedPlace} />
         </div>
       </div>
-      {/* </div> */}
     </>
   );
 }

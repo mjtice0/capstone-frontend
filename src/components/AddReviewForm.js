@@ -60,7 +60,6 @@ const AddReviewForm = ({ placeId }) => {
       <button className="addReviewButton" onClick={formShow}>
         Add New Review
       </button>
-  
     );
   return (
     <div className="create-review-container">
