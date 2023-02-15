@@ -1,10 +1,9 @@
-
 import axios from "axios";
 import { useRef, useState } from "react";
 import "./login.css";
-import"./register.css";
+import "./register.css";
 
-export default function Login({ setShowLogin, setCurrentUsername,myStorage }) {
+export default function Login({ setShowLogin, setCurrentUsername, myStorage }) {
   const [error, setError] = useState(false);
   // const [showLogin, setShowLogin] = useState(false);
   const usernameRef = useRef();
@@ -17,10 +16,12 @@ export default function Login({ setShowLogin, setCurrentUsername,myStorage }) {
       password: passwordRef.current.value,
     };
     try {
-      const res = await axios.post("/users/login", user);
+      const res = await axios.post("http://localhost:8800/api/users/login",
+        user
+      );
       setCurrentUsername(res.data.username);
-      myStorage.setItem('user', res.data.username);
-      setShowLogin(false)
+      myStorage.setItem("user", res.data.username);
+      setShowLogin(false);
     } catch (err) {
       setError(true);
     }
@@ -41,9 +42,9 @@ export default function Login({ setShowLogin, setCurrentUsername,myStorage }) {
         </button>
         {error && <span className="failure">Something went wrong!</span>}
       </form>
-      <button className="cancelLoginButton" onClick={()=>setShowLogin(false)}>Cancel</button>
+      <button className="cancelLoginButton" onClick={() => setShowLogin(false)}>
+        Cancel
+      </button>
     </div>
   );
 }
-
-

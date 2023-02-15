@@ -45,7 +45,6 @@ export default function Map({ onMarkerClick }) {
     libraries,
   });
 
-  // https://react-google-maps-api-docs.netlify.app/#standalonesearchbox
   const onPlacesChanged = () => {
     if (!searchBox) return; // ensure searchBox is loaded/ready
 
