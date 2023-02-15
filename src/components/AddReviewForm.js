@@ -56,9 +56,11 @@ const AddReviewForm = ({ placeId }) => {
 
   if (!isReviewActive)
     return (
-      <button className="submitButton" onClick={formShow}>
+    
+      <button className="addReviewButton" onClick={formShow}>
         Add New Review
       </button>
+  
     );
   return (
     <div className="create-review-container">
@@ -133,36 +135,3 @@ const AddReviewForm = ({ placeId }) => {
 
 export default AddReviewForm;
 
-{
-  /* <div className="rating">
-          {
-            [1, 2, 3, 4, 5].map(i => {
-              return (
-                <label key={i}>
-                  <button
-                    type="button"
-                    name="rating"
-                    value={i}
-                    checked={i === reviewRating}
-                    onClick={e => setReviewRating(parseInt(e.target.value))}
-                  />
-                    {i}
-                </label>
-                )
-              })
-            } */
-}
-{
-  /* </div> */
-}
-
-{
-  /* // <label>Rating:</label>
-        // <select value={reviewRating} onChange={handleReviewRating}>
-        //   <option value="1">🦖</option>
-        //   <option value="2">🦖🦖</option>
-        //   <option value="3">🦖🦖🦖</option>
-        //   <option value="4">🦖🦖🦖🦖</option>
-        //   <option value="5">🦖🦖🦖🦖🦖</option>
-        // </select> */
-}

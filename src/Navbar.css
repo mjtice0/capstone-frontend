@@ -54,3 +54,13 @@ a:hover {
     border-radius: 20%;
     padding: 2px;  
 }
+
+/* .button {
+  
+} */
+
+.buttons {
+    background-color: purple;
+    padding: 5px;
+    margin: 15px;
+}

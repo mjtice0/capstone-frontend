@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import axios from "axios";
+import"./register.css";
 
-export default function Register() {
+export default function Register({setShowRegister}) {
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
 
@@ -20,7 +21,7 @@ export default function Register() {
       password:passwordRef.current.value,
     };
     try {
-      await axios.post("/users/register", newUser);
+      await axios.post("http://localhost:8800/api/users/register", newUser);
       setLoginFailed(false);
       setLoginSuccess(true);
     } catch (err) {
@@ -42,7 +43,7 @@ export default function Register() {
         <span className="failure">Login failed. Something went wrong</span>
         }
       </form>
-      <button className="cancel">Cancel</button>
+      <button className="cancel" onClick={()=>setShowRegister(false)}>Cancel</button>
     </div>
   );
 }

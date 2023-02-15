@@ -15,14 +15,14 @@ export default function Navbar() {
       <div className="navlogo">
         <img src={logo} alt="Logo" className="logo" />
       </div>
-      <ul className="navbar-links">
-        {/* <li><a href="./pages/Login.js">Login</a></li>
+      {/* <ul className="navbar-links"> */}
+        {/* <li><a href="./pages/Login.js" onClick={()=>{setShowLogin(true)}}>Login</a></li>
         <li><a href="./pages/Register">Register</a></li> */}
-        
+      
       {currentUser ? (
         <button className="logoutButton">Log out</button>
       ) : (
-        <div classNamme="buttons">
+        <div className="buttons">
         <button className="loginButton" onClick={()=>{setShowLogin(true)}}>
           Login
         </button>
@@ -31,7 +31,9 @@ export default function Navbar() {
         </button>
         </div>
       )}
-      </ul>
+      {showRegister && <Register setShowRegister={setShowRegister} />}
+      {showLogin && <Login setShowLogin={setShowLogin} />}
+      {/* </ul> */}
     </nav>
   );
 }

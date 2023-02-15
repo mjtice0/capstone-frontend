@@ -23,16 +23,23 @@ function App() {
         <Navbar />
         <div className="first-row">
           <Map onMarkerClick={onMarkerClick} />
+        </div>
+        <div className="second-row">
           <PlaceDetails place={selectedPlace} />
         </div>
-        <Register />
-      <div className="footer-container">
-        <Footer />
+     
+
+
+        <div className="footer-container">
+          <Footer />
+        </div>
       </div>
-    </div>
     </>
   );
 }
+
+
+
 
 export default App;
 
