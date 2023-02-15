@@ -27,9 +27,8 @@ export default function Login({ setShowLogin, setCurrentUsername,myStorage }) {
 
   return (
     <div className="loginContainer">
-
       <form onSubmit={handleSubmit}>
-        <input autoFocus placeholder="username" ref={usernameRef} />
+        <input type="username" placeholder="username" ref={usernameRef} />
         <input
           type="password"
           min="6"

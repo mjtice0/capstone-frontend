@@ -17,20 +17,9 @@
   flex-direction: row;
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  min-height: 120px;
-  font-size: 18px;
-  background-color: black;
-  color: white;
-}
-
 .submitButton {
   border: non;
   padding: 5px;
   background-color: tomato;
-
 }
+

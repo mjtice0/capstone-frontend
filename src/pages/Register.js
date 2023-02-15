@@ -33,7 +33,7 @@ export default function Register({setShowRegister}) {
         <input type="text" placeholder="username" ref={nameRef} />
         <input type="email" placeholder="email" ref={emailRef}/>
         <input type="password" placeholder="password" ref={passwordRef} />
-        <button className="registerButton">Register</button>
+        <button className="rgtButton">Register</button>
         {loginSuccess && (
         <span className="success">Login was successful!</span>
         )} {loginFailed &&
