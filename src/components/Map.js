@@ -27,7 +27,7 @@ const searchBoxStyle = {
   margin: "center",
   position: "absolute",
   top: "30px",
-  marginLeft: "35%",
+  marginLeft: "30%",
 };
 
 export default function Map({ onMarkerClick }) {

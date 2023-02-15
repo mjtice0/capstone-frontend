@@ -1,12 +1,12 @@
 export const features = [
   {
-    name: ":Loud Music",
+    name: "Loud Music",
   },
   {
-    name: ":Quiet Music",
+    name: "Quiet Music",
   },
   {
-    name: ":No Music",
+    name: "No Music",
   },
   {
     name: "Dedicated Quiet Space",

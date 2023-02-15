@@ -52,16 +52,10 @@
 
 .error {
     color: red;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
 }
 
-.cancel {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-}
 
 .cContainer {
     top: 0;
@@ -74,4 +68,27 @@
     align-items: center; 
     justify-content: space-between;
     
+}
+
+.logoutButton {
+    border: 2px solid white;
+    border-radius:5px;
+    background-color: white;
+    width: 100px;
+    color: black;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+
+}
+
+.loginButton {
+    border: 2px solid white;
+    border-radius:5px;
+    background-color: white;
+    width: 100px;
+    color: black;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
 }

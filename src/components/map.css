@@ -29,20 +29,21 @@
 .reviews {
   border: 2px solid white;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   display: flex;
-  height: 60vh;
-  width: 75vh;
+  height: 70vh;
+  width: 85vh;
 }
 
  .review-item {
   border: 1px solid black;
-  padding: 12px;
+  padding: 1px;
+  list-style: none;
 }
 
 .review-title {
-  font-size: 18px;
+  font-size: 16px;
 }
 
  /* container for form with accessibility features */
@@ -53,7 +54,7 @@
    padding: 12px;
    border: 2px solid white; 
    border-radius: 5%;
-   font-size: 18px;
+   font-size: 16px;
   }
 
  .accessibility-checklist {
