@@ -39,27 +39,23 @@ export default function Map({ onMarkerClick }) {
     lng: -104.991531,
   });
 
-  //Goolge React Maps hook to load Google Maps Javascript API, specify key and library
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API,
     libraries,
   });
 
   const onPlacesChanged = () => {
-    if (!searchBox) return; // ensure searchBox is loaded/ready
+    if (!searchBox) return; // 
 
     const places = searchBox.getPlaces();
     console.log({ places });
 
-    // Center map on first result
     setMapCenter(places?.[0].geometry.location);
 
-    // clear existing markers
     markers.forEach((marker) => {
       marker.setMap(null);
     });
 
-    // add new Markers with click event that calls onMarkerClick?.(data)
     setMarkers(
       places.map((place) => {
         const marker = new window.google.maps.Marker({
@@ -80,7 +76,6 @@ export default function Map({ onMarkerClick }) {
     );
   };
 
-  // This callback is called when the searchBox instance has loaded.
   const onLoadSearchBox = (searchBoxInstance) => {
     setSearchBox(searchBoxInstance);
   };
@@ -98,7 +93,6 @@ export default function Map({ onMarkerClick }) {
         >
           <>
             <div className="search-box">
-              {/* <i class="fa-solid fa-magnifying-glass"></i> */}
               <StandaloneSearchBox
                 onPlacesChanged={onPlacesChanged}
                 onLoad={onLoadSearchBox}

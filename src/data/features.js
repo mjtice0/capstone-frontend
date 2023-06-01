@@ -1,56 +1,50 @@
 export const features = [
   {
-    name: "Loud Music",
+    name: "Noise",
+    values: [
+      "Loud music",
+      "Quiet music",
+      "No music",
+      "Dedicated quiet space",
+      "Outdoor seating options",
+      "Loud environmental noise (kitchen, traffic)",
+      "Dedicated quiet hours",
+    ],
   },
   {
-    name: "Quiet Music",
+    name: "Wheelchair Accessibility",
+    values: [
+      "Elevator",
+      "Ramp",
+      "Wide spaces",
+      "Wheelchair accessible bathroom",
+      "Handicap parking",
+      "Motor scooters",
+    ],
   },
   {
-    name: "No Music",
+    name: "Lights",
+    values: [
+      "Dim lighting",
+      "Fluoroscent lights",
+      "Natural light only",
+      "Candle/string lights",
+      "Flashing/strobe lights",
+    ],
   },
   {
-    name: "Dedicated Quiet Space",
-  },
-  {
-    name: "Outdoor Area",
-  },
-  {
-    name: "Sensory accomodations available",
-  },
-  {
-    name: "Dedicated Quiet Hours",
-  },
-  {
-    name: "Low Lighting",
-  },
-  {
-    name: "Fluorescent Lighting",
-  },
-  {
-    name: "Natural Ligthing",
-  },
-  {
-    name: "Strobe Lights/Flashing Lights",
-  },
-  {
-    name: "Dedicated Scent-free",
-  },
-  {
-    name: "Scented Air Freshners/Candles",
-  },
-  {
-    name: "Bright Colors",
-  },
-  {
-    name: "Loud Environmental Noise (traffic, busy street)",
-  },
-  {
-    name: "Pets Allowed",
-  },
-  {
-    name: "Kitchen separate from seating area",
-  },
-  {
-    name: "Child-friendly",
+    name: "Sensory",
+    values: [
+      "Sesnsory friendly hours",
+      "Private, sensory input space",
+      "Private, sensory deprivation space",
+      "Sensory kits",
+      "Separate entrance",
+      "Headphones available",
+      "Dedicated scent-free",
+      "Artificial scents",
+      "Bright colors",
+      "Child-friendly",
+    ],
   },
 ];

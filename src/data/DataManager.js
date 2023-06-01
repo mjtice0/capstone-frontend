@@ -1,7 +1,4 @@
-
 import axios from "axios";
-
-
 
 function getReviews(placeId) {
   return axios
@@ -25,11 +22,10 @@ function addReview(placeId, reviewData) {
       title: reviewData.title,
       description: reviewData.description,
       rating: reviewData.rating,
-      features: reviewData.features
-
+      features: reviewData.features,
     })
     .then((response) => {
-      console.log(response.data)
+      console.log(response.data);
       const reviews = response.data;
       console.log("postReviews()", { reviews });
       return reviews;
@@ -42,21 +38,19 @@ function addReview(placeId, reviewData) {
 
 function deleteReview(placeId) {
   return axios
-  .delete(`http://localhost:8800/api/reviews/${placeId}`)
-  .then((response) => {
-    const reviews = response.data;
-    console.log("getReviews()", { reviews });
-    return reviews;
-  })
-  .catch((error) => {
-    console.error(error);
-    throw error;
-  })
+    .delete(`http://localhost:8800/api/reviews/${placeId}`)
+    .then((response) => {
+      const reviews = response.data;
+      console.log("getReviews()", { reviews });
+      return reviews;
+    })
+    .catch((error) => {
+      console.error(error);
+      throw error;
+    });
 }
 export default {
   deleteReview,
   getReviews,
   addReview,
 };
-
-

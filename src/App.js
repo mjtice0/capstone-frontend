@@ -22,7 +22,7 @@ function App() {
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className="all-rows">
         <div className="first-row">
           <Map onMarkerClick={onMarkerClick} />

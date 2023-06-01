@@ -10,8 +10,6 @@ const AddReviewForm = ({ placeId }) => {
   const [reviewDescription, setReviewDescription] = useState("");
   const [reviewRating, setReviewRating] = useState(1);
   const [reviewFeatures, setReviewFeatures] = useState([]); // array of String
-  
-  
 
   const onChangeFeature = (event) => {
     const features = new FormData(event.target.form).getAll("feature");
@@ -107,28 +105,29 @@ const AddReviewForm = ({ placeId }) => {
           })}
         </div>
         <div className="accessibility-checklist">
-          <h2 className="checkbox-heading">Accessibility Features:</h2>
-          <ul className="features-list">
-            {features.map(({ name }, index) => {
-              return (
-                <li key={index}>
-                  <div className="left-section">
+          <h2 className="checkbox-heading">Accessibility Features</h2>
+          {features.map((category) => (
+            <div key={category.name}>
+              <h3>{category.name}</h3>
+              {category.values.map((value) => (
+                <div key={value}>
+                  <label>
                     <input
                       type="checkbox"
-                      id={`custom-checkbox-${index}`}
+                      id={`custom-checkbox-${value}`}
                       name="feature"
-                      value={name}
-                      checked={reviewFeatures.includes(name)}
+                      value={value}
+                      checked={reviewFeatures.includes(value)}
                       onChange={onChangeFeature}
                     />
-                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+                    {value}
+                  </label>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
-      
+
         <button className="submitButton" type="Submit" disabled={!enabled}>
           Submit
         </button>

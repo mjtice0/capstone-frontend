@@ -16,7 +16,8 @@ export default function Login({ setShowLogin, setCurrentUsername, myStorage }) {
       password: passwordRef.current.value,
     };
     try {
-      const res = await axios.post("http://localhost:8800/api/users/login",
+      const res = await axios.post(
+        "http://localhost:8800/api/users/login",
         user
       );
       setCurrentUsername(res.data.username);
@@ -28,7 +29,6 @@ export default function Login({ setShowLogin, setCurrentUsername, myStorage }) {
   };
 
   return (
-   
     <div className="loginContainer">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
@@ -44,11 +44,10 @@ export default function Login({ setShowLogin, setCurrentUsername, myStorage }) {
         </button>
         {error && <span className="failure">Something went wrong!</span>}
       </form>
- 
+
       <button className="cancelLoginButton" onClick={() => setShowLogin(false)}>
         Cancel
       </button>
-  
     </div>
   );
 }
