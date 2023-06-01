@@ -3,7 +3,7 @@ import "./Map.css";
 import { features } from "../data/features";
 import DataManager from "../data/DataManager";
 
-const AddReviewForm = ({ placeId }) => {
+const AddReviewForm = ({ placeId, updateReviewList }) => {
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewName, setReviewName] = useState("");
   const [isReviewActive, setIsReviewActive] = useState(false);
@@ -31,20 +31,26 @@ const AddReviewForm = ({ placeId }) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log("form submitted!");
-
-    const featuresValue = reviewFeatures.sort().join(", ");
-    console.log(featuresValue);
 
     const newReview = {
       name: reviewName,
       title: reviewTitle,
       description: reviewDescription,
       rating: reviewRating,
-      features: featuresValue,
-
-      // checkboxes: checkedState,
+      features: reviewFeatures.sort().join(", "),
     };
+
+    DataManager.addReview(placeId, newReview)
+      .then(() => {
+        updateReviewList();
+      })
+      .catch((error) => {
+        console.error(error);
+        
+      });
+
+    // const featuresValue = reviewFeatures.sort().join(", ");
+    // console.log(featuresValue);
 
     DataManager.addReview(placeId, newReview);
     setReviewName("");

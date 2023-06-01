@@ -3,7 +3,6 @@ import AddReviewForm from "./AddReviewForm";
 import DataManager from "../data/DataManager";
 import "./Map.css";
 
-// React component Reviews - displays all reviews on screen that it receives
 function Reviews({ reviews, place }) {
   if (!reviews.length)
     return (
@@ -35,21 +34,36 @@ export default function PlaceDetails({ place }) {
     if (!place) return;
 
     const { placeId } = place;
-    console.log("new place selected", { placeId, place });
-    DataManager.getReviews(placeId).then((reviews) => {
-      console.log("got reviews!", { reviews });
-      setReviews(reviews);
-    });
+    DataManager.getReviews(placeId)
+      .then((reviews) => {
+        setReviews(reviews);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [place]);
+
+  const updateReviewList = () => {
+    const { placeId } = place;
+    DataManager.getReviews(placeId)
+      .then((reviews) => {
+        setReviews(reviews);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div className="reviews-container">
       <div className="reviews">
-        {/* <h2>Reviews for {place.name}</h2> */}
         <Reviews reviews={reviews} />
       </div>
       <div className="reivews-form">
-        <AddReviewForm placeId={place?.placeId} />
+        <AddReviewForm
+          placeId={place?.placeId}
+          updateReviewList={updateReviewList}
+        />
       </div>
     </div>
   );
