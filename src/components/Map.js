@@ -45,7 +45,7 @@ export default function Map({ onMarkerClick }) {
   });
 
   const onPlacesChanged = () => {
-    if (!searchBox) return; // 
+    if (!searchBox) return; //
 
     const places = searchBox.getPlaces();
     console.log({ places });
