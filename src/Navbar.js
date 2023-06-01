@@ -14,7 +14,9 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navlogo">
-        <img src={logo} alt="Logo" className="logo" />
+        <Link to="/" className="logo-link">
+          <img src={logo} alt="Logo" className="logo" />
+        </Link>
       </div>
 
       {/* Update the button links to use react-router-dom's Link component */}
@@ -30,8 +32,7 @@ export default function Navbar() {
   );
 }
 
-
-  /* <nav className="navbar">
+/* <nav className="navbar">
 <div className="navlogo">
   <img src={logo} alt="Logo" className="logo" />
 </div>
@@ -50,4 +51,3 @@ export default function Navbar() {
 )}
 {showRegister && <Register setShowRegister={setShowRegister} />}
 {showLogin && <Login setShowLogin={setShowLogin} />} */
-

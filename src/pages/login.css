@@ -1,10 +1,9 @@
-
 .loginContainer {
-    width: 300px;
-    height: 200px;
-    z-Index: 9999;
-    padding: 10px;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
     border-radius: 10px;
+    border: 1px solid black;
     background-color: white;
     position: fixed;
     top: 0;
@@ -14,77 +13,45 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-}
-
-.loginBtn {
-    border: none;
-    border-radius:5px;
-    cursor: pointer;
+    align-items: center;
+    justify-content: space-around;
+    animation: fade-in 0.5s ease-in-out;
+  }
+  
+  .loginContainer input {
+    width: 100%;
+    height: 40px;
     padding: 5px;
-    width: 90px;
-    height: 34px;
-    background-color: black;
-    color: white;
-    margin: 10px;
-    margin-left: 94px;
-}
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
 
+  .loginBtn,
 .cancelLoginButton {
-    border: none;
-    border-radius:5px;
-    cursor: pointer;
-    width: 90px;
-    height: 34px;
-    padding: 5px;
-    background-color: black;
-    color: white;
-    margin: 15px;
-    margin-bottom: 60px;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 120px;
+  height: 34px;
+  background-color: black;
+  color: white;
 }
 
+ 
 .success {
     color: green;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
 }
 
 .error {
     color: red;
-    font-size: 12px;
+    font-size: 16px;
     text-align: center;
 }
 
-.cContainer {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: space-between;
-}
 
-.logoutButton {
-    border: 2px solid white;
-    border-radius:5px;
-    background-color: white;
-    width: 100px;
-    color: black;
-    cursor: pointer;
-    width: 100px;
-    height: 50px;
-}
-
-.loginButton {
-    border: 2px solid white;
-    border-radius:5px;
-    background-color: white;
-    width: 100px;
-    color: black;
-    cursor: pointer;
-    width: 100px;
-    height: 50px;
-}
+  

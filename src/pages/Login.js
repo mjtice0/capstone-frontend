@@ -39,15 +39,19 @@ export default function Login({ setShowLogin, setCurrentUsername, myStorage }) {
           placeholder="password"
           ref={passwordRef}
         />
-        <button className="loginBtn" type="submit">
-          Login
-        </button>
-        {error && <span className="failure">Something went wrong!</span>}
+        <div className="buttonContainer">
+          <button className="loginBtn" type="submit">
+            Login
+          </button>
+          <button
+            className="cancelLoginButton"
+            onClick={() => setShowLogin(false)}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
-
-      <button className="cancelLoginButton" onClick={() => setShowLogin(false)}>
-        Cancel
-      </button>
+      {error && <span className="error">Something went wrong!</span>}
     </div>
   );
 }
