@@ -46,13 +46,9 @@ const AddReviewForm = ({ placeId, updateReviewList }) => {
       })
       .catch((error) => {
         console.error(error);
-        
       });
 
-    // const featuresValue = reviewFeatures.sort().join(", ");
-    // console.log(featuresValue);
 
-    DataManager.addReview(placeId, newReview);
     setReviewName("");
     setReviewTitle("");
     setReviewDescription("");
