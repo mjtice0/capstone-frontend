@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import PlaceDetails from "./components/PlaceDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -17,17 +18,22 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home onMarkerClick={onMarkerClick} selectedPlace={selectedPlace} />
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_OAUTH_ID}>
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                onMarkerClick={onMarkerClick}
+                selectedPlace={selectedPlace}
+              />
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </GoogleOAuthProvider>
     </>
   );
 }

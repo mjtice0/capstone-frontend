@@ -27,23 +27,25 @@ export default function Register({ setShowRegister }) {
 
   return (
     <div className="registerContainer">
-      <h1>Register</h1>
+      <h1>User Registration</h1>
       <form onSubmit={handleRegisterSubmit}>
         <input type="text" placeholder="username" ref={nameRef} />
         <input type="email" placeholder="email" ref={emailRef} />
         <input type="password" placeholder="password" ref={passwordRef} />
         <button className="registerButton">Register</button>
-        <button
-          className="cancelRegisterButton"
-          onClick={() => setShowRegister(false)}
-        >
-          Cancel
-        </button>
+        {loginSuccess && (
+          <span className="success">Login was successful!</span>
+        )}{" "}
+        {loginFailed && (
+          <span className="failure">Login failed. Something went wrong</span>
+        )}
       </form>
-      {loginSuccess && <span className="success">Login was successful!</span>}{" "}
-      {loginFailed && (
-        <span className="failure">Login failed. Something went wrong</span>
-      )}
+      <button
+        className="cancelRegisterButton"
+        onClick={() => setShowRegister(false)}
+      >
+        Cancel
+      </button>
     </div>
   );
 }

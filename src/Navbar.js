@@ -23,6 +23,7 @@ export default function Navbar() {
         </Link>
       </div>
 
+
       <div className="buttons">
         {currentUser ? (
           <button className="loginButton" onClick={handleLogout}>
