@@ -1,6 +1,6 @@
 .registerContainer {
-    width: 450px;
-    height: 500px;
+    width: 500px;
+    height: 600px;
     padding: 20px;
     border-radius: 20px;
     border: 2px solid black;
@@ -20,7 +20,7 @@
   .registerContainer h1 {
     margin-top: 20px;
     margin-bottom: 10px;
-    font-size: 36px;
+    font-size: 38px;
   }
   
   .registerContainer input {
@@ -43,15 +43,16 @@
     height: 38px;
     background-color: black;
     color: white;
+    font-size: 20px;
   }
   
   .success {
     color: green;
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
   }
   
-  .error {
+  .failure {
     color: red;
     font-size: 18px;
     text-align: center;

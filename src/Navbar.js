@@ -19,7 +19,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Update the button links to use react-router-dom's Link component */}
+      
       <div className="buttons">
         <Link to="/login" className="loginButton">
           Login
