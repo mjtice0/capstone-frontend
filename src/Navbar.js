@@ -19,12 +19,11 @@ export default function Navbar() {
         </Link>
       </div>
 
-      
       <div className="buttons">
         <Link to="/login" className="loginButton">
           Login
         </Link>
-        <Link to="/register" className="registerButton">
+        <Link to="/register" className="regButton">
           Register
         </Link>
       </div>

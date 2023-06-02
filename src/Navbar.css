@@ -9,17 +9,24 @@
     width: 100%;
     position: sticky;
 }
-
+.navlogo {
+    display: flex;
+    align-items: center;
+  }
+  
 .logo {
     height: 140px;
     width: 160px;
-    display: flex;
     border-radius: 20%;
     padding: 2px;  
 }
-
+.buttons {
+    display: flex;
+    align-items: flex-end;
+  }
+  
 .loginButton,
-.buttons .registerButton {
+.regButton {
     border-radius: 5px;
     background-color: white;
     color: black;
@@ -30,15 +37,7 @@
     margin-right: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
 }
 
 
-
-
-/* .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 20px; 
-    height: 50px;} */
