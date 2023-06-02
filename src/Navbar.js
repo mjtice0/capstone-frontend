@@ -9,7 +9,11 @@ import "./pages/login.css";
 export default function Navbar() {
   // const [showRegister, setShowRegister] = useState(false);
   // const [showLogin, setShowLogin] = useState(false);
-  // const [currentUser, setCurrentUser] = useState(false);
+  const [currentUser, setCurrentUser] = useState(false);
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+  };
 
   return (
     <nav className="navbar">
@@ -20,33 +24,21 @@ export default function Navbar() {
       </div>
 
       <div className="buttons">
-        <Link to="/login" className="loginButton">
-          Login
-        </Link>
-        <Link to="/register" className="regButton">
-          Register
-        </Link>
+        {currentUser ? (
+          <button className="loginButton" onClick={handleLogout}>
+            Log Out
+          </button>
+        ) : (
+          <>
+            <Link to="/login" className="loginButton">
+              Login
+            </Link>
+            <Link to="/register" className="regButton">
+              Register
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
 }
-
-/* <nav className="navbar">
-<div className="navlogo">
-  <img src={logo} alt="Logo" className="logo" />
-</div>
-
-{currentUser ? (
-  <button className="logoutButton">Log out</button>
-) : (
-  <div className="buttons">
-  <button className="loginButton" onClick={()=>{setShowLogin(true)}}>
-    Login
-  </button>
-  <button className="registerButton" onClick={()=>{setShowRegister(true)}}>
-    Register
-  </button>
-  </div>
-)}
-{showRegister && <Register setShowRegister={setShowRegister} />}
-{showLogin && <Login setShowLogin={setShowLogin} />} */
