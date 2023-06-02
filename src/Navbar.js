@@ -22,9 +22,9 @@ export default function Navbar() {
           <img src={logo} alt="Logo" className="logo" />
         </Link>
       </div>
+      
 
-
-      <div className="buttons">
+      {/* Update the button links to use react-router-dom's Link component */}
         {currentUser ? (
           <button className="loginButton" onClick={handleLogout}>
             Log Out
