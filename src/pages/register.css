@@ -1,68 +1,59 @@
 .registerContainer {
-    border-radius: 10px;
-    z-index: 9999;
+    width: 450px;
+    height: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid black;
     background-color: white;
     position: fixed;
-    margin: auto;
-    display: flex;
-    width: 250px;
-    height: 300px;
-    padding: 18px;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+    display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.registerButton {
-    border: none;
-    border-radius:5px;
-    cursor: pointer;
-    width: 100px;
-    height: 50px;
-    background-color: white;
-    color: black;
-    margin: 15px;
-}
-
-.cancelButton {
-    border: none;
-    border-radius:5px;
-    cursor: pointer;
-    width: 90px;
-    height: 32px;
-    background-color: black;
-    color: white;
-    margin: 15px;
-    margin-bottom: 50px;
-    cursor: pointer;
-}
-
-.success {
-    color: green;
-    font-size: 14px;
-    text-align: center;
-}
-
-.failure {
-    position: absolute;
-    color: red;
-    font-size: 10px;   
-}
-
-.rgtButton {
-    border: none;
-    border-radius:5px;
-    cursor: pointer;
-    background-color: black;
-    color: white;
-    width: 90px;
-    height: 32px;
-    margin: 10px;
-    margin-left: 60px;
-}
+    justify-content: center; 
+  }
   
-
+  .registerContainer h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 36px;
+  }
+  
+  .registerContainer input {
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .registerButton,
+  .cancelRegisterButton {
+    display: block;
+    margin: auto;
+    margin-top: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 130px;
+    height: 38px;
+    background-color: black;
+    color: white;
+  }
+  
+  .success {
+    color: green;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .error {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 28px; }
+  

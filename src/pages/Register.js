@@ -1,20 +1,20 @@
 import { useState, useRef } from "react";
 import axios from "axios";
-import"./register.css";
+import "./register.css";
 
-export default function Register({setShowRegister}) {
+export default function Register({ setShowRegister }) {
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [loginFailed, setLoginFailed] = useState(false);
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const handleRegisterSubmit = async(event) => {
+  const handleRegisterSubmit = async (event) => {
     event.preventDefault();
     const newUser = {
-      username:nameRef.current.value,
-      email:emailRef.current.value,
-      password:passwordRef.current.value,
+      username: nameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
     };
     try {
       await axios.post("http://localhost:8800/api/users/register", newUser);
@@ -30,16 +30,22 @@ export default function Register({setShowRegister}) {
       <h1>User Registration</h1>
       <form onSubmit={handleRegisterSubmit}>
         <input type="text" placeholder="username" ref={nameRef} />
-        <input type="email" placeholder="email" ref={emailRef}/>
+        <input type="email" placeholder="email" ref={emailRef} />
         <input type="password" placeholder="password" ref={passwordRef} />
-        <button className="rgtButton">Register</button>
+        <button className="registerButton">Register</button>
         {loginSuccess && (
-        <span className="success">Login was successful!</span>
-        )} {loginFailed &&
-        <span className="failure">Login failed. Something went wrong</span>
-        }
+          <span className="success">Login was successful!</span>
+        )}{" "}
+        {loginFailed && (
+          <span className="failure">Login failed. Something went wrong</span>
+        )}
       </form>
-      <button className="cancelButton" onClick={()=>setShowRegister(false)}>Cancel</button>
+      <button
+        className="cancelRegisterButton"
+        onClick={() => setShowRegister(false)}
+      >
+        Cancel
+      </button>
     </div>
   );
 }
