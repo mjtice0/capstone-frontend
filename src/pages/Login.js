@@ -30,7 +30,7 @@ export default function Login({ setShowLogin, setCurrentUsername, myStorage }) {
 
   return (
     <div className="loginContainer">
-      <h1>Login</h1>
+      <h1 className="loginHeading">Login</h1>
       <form onSubmit={handleSubmit}>
         <input type="username" placeholder="username" ref={usernameRef} />
         <input
