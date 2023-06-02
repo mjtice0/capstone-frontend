@@ -2,8 +2,6 @@
 .map-container {
   width: 100%;
   margin-top: 70px;
-  background-color: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
-  display: flex; 
   justify-content: center;
   align-items: center;
   flex-direction: row;
@@ -116,8 +114,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 10%;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
   color: white;
   background-color: black;
   height: 80px;
