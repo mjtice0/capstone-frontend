@@ -59,7 +59,7 @@ export default function PlaceDetails({ place }) {
       <div className="reviews">
         <Reviews reviews={reviews} />
       </div>
-      <div className="reivews-form">
+      <div className="reviews-form">
         <AddReviewForm
           placeId={place?.placeId}
           updateReviewList={updateReviewList}

@@ -18,23 +18,25 @@
 }
 
 .reviews-container {
-  display: flex; 
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 15px; 
-  margin-top: 40px;;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 15px;
+  margin-top: 40px;
 }
 
 .reviews {
   border: 2px solid white;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  display: flex;
-  height: 70vh;
-  width: 85vh;
+  flex-basis: 50%;
+  overflow-y: auto;
+  max-height: 70vh;
+
 }
+
+.reviews-form {
+  flex-basis: 30%;
+} 
+
 
  .review-item {
   border: 1px solid black;
@@ -46,15 +48,13 @@
   font-size: 16px;
 }
 
- /* container for form with accessibility features */
+
 .create-review-container {
-   margin: 16px;
-   max-width: 600px;
-   width: 500px;
    padding: 12px;
    border: 2px solid white; 
    border-radius: 5%;
    font-size: 16px;
+   
   }
 
  .accessibility-checklist {
@@ -86,7 +86,6 @@
   font-size: 26px;
 }
 
-/* buttons styling, add review and submit review css */
  .submitButton{
   border-radius: 10%;
   margin: 1em;
@@ -98,7 +97,6 @@
   font-size: 22px;
  }
 
-/* button for setting the stars (rating) */
  button {
   background-color: transparent;
   border: none;
