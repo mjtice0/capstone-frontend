@@ -24,10 +24,8 @@ const searchBoxStyle = {
   borderRadius: `10px`,
   fontSize: `20px`,
   fontWeight: "bold",
-  margin: "center",
-  position: "absolute",
   top: "30px",
-  marginLeft: "30%",
+  margin: "auto",
 };
 
 export default function Map({ onMarkerClick }) {
@@ -92,7 +90,7 @@ export default function Map({ onMarkerClick }) {
           onLoad={(map) => setMap(map)}
         >
           <>
-            <div className="search-box">
+            <div className="search-box-container">
               <StandaloneSearchBox
                 onPlacesChanged={onPlacesChanged}
                 onLoad={onLoadSearchBox}

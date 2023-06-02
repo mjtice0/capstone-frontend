@@ -15,6 +15,14 @@
    padding: 10px;
 }
 
+.search-box-container {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
 .reviews-container {
   display: flex;
   justify-content: space-around;
