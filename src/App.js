@@ -6,10 +6,11 @@ import Navbar from "./Navbar";
 import PlaceDetails from "./components/PlaceDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const [showLogin, setShowLogin] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   function onMarkerClick(data) {
     const place = data.place;
@@ -18,22 +19,29 @@ function App() {
 
   return (
     <>
-      <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_OAUTH_ID}>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                onMarkerClick={onMarkerClick}
-                selectedPlace={selectedPlace}
-              />
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </GoogleOAuthProvider>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              onMarkerClick={onMarkerClick}
+              selectedPlace={selectedPlace}
+              setShowLogin={setShowLogin}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Login
+              setShowLogin={setShowLogin}
+              setCurrentUser={setCurrentUser}
+            />
+          }
+        />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </>
   );
 }
@@ -49,9 +57,6 @@ function Home({ onMarkerClick, selectedPlace }) {
       </div>
     </div>
   );
+  ``;
 }
 export default App;
-// const myStorage = window.localStorage;
-// const [showRegister, setShowRegister] = useState(false);
-// const [showLogin, setShowLogin] = useState(false);
-// const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));

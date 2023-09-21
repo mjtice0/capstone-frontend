@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./register.css";
 
-export default function Register({ setShowRegister }) {
-  const [loginSuccess, setLoginSuccess] = useState(false);
-  const [loginFailed, setLoginFailed] = useState(false);
+export default function Register({ setShowRegister, setCurrentUser }) {
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [registrationFailed, setRegistrationFailed] = useState(false);
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -18,10 +18,10 @@ export default function Register({ setShowRegister }) {
     };
     try {
       await axios.post("http://localhost:8800/api/users/register", newUser);
-      setLoginFailed(false);
-      setLoginSuccess(true);
+      setRegistrationFailed(false);
+      setRegistrationSuccess(true);
     } catch (err) {
-      setLoginFailed(true);
+      setRegistrationFailed(true);
     }
   };
 
@@ -33,11 +33,11 @@ export default function Register({ setShowRegister }) {
         <input type="email" placeholder="email" ref={emailRef} />
         <input type="password" placeholder="password" ref={passwordRef} />
         <button className="registerButton">Register</button>
-        {loginSuccess && (
-          <span className="success">Login was successful!</span>
-        )}{" "}
-        {loginFailed && (
-          <span className="failure">Login failed. Something went wrong</span>
+        {registrationSuccess && (
+          <span className="success">Registration was successful!</span>
+        )}
+        {registrationFailed && (
+          <span className="failure">Registration failed. Try again.</span>
         )}
       </form>
       <button

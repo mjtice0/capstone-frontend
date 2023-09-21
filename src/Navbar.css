@@ -19,8 +19,9 @@
     height: 140px;
     width: 160px;
     border-radius: 20%;
-    padding: 2px;  
+    /* padding: 4px;   */
     display: flex;
+    margin-left: 20px;
 }
 .buttons {
     display: flex;
