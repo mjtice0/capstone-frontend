@@ -1,25 +1,20 @@
 import axios from "axios";
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 import "./login.css";
 import "./register.css";
 import jwt_decode from "jwt-decode";
 
-export default function Login({ setShowLogin, setCurrentUser, myStorage }) {
+export default function Login({
+  setShowLogin,
+  setCurrentUser,
+  setIsLoggedIn,
+  myStorage,
+}) {
   const [loginFailed, setLoginFailed] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false); // Track user login state
+  const [showSuccess, setShowSuccess] = useState(false); // Track login success state
   const usernameRef = useRef();
   const passwordRef = useRef();
-  const navigate = useNavigate(); // Use useNavigate for navigation
-
-  const handleLogout = () => {
-    // Implement the logout logic here
-    // For example, clear the user token from localStorage and reset the state
-    localStorage.removeItem("userToken");
-    setCurrentUser(null);
-    setIsLoggedIn(false);
-    navigate("/login"); // Use navigate to redirect
-  };
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -41,13 +36,20 @@ export default function Login({ setShowLogin, setCurrentUser, myStorage }) {
       const decodedToken = jwt_decode(token);
       setCurrentUser(decodedToken.username);
 
+      // Set the user as authenticated
       setIsLoggedIn(true);
 
-      console.log("Login successful");
-      console.log("User:", decodedToken.username);
-      console.log("Token:", token);
+      // Show a login successful message
+      setShowSuccess(true);
 
-      navigate("/"); // Redirect to the homepage after successful login
+      // Clear the login form
+      usernameRef.current.value = "";
+      passwordRef.current.value = "";
+
+      // Close the login form after a delay
+      setTimeout(() => {
+        setShowLogin(false);
+      }, 2000); // Adjust the delay as needed
     } catch (err) {
       console.error("Login error:", err);
 
@@ -55,9 +57,19 @@ export default function Login({ setShowLogin, setCurrentUser, myStorage }) {
     }
   };
 
+  const handleLogout = () => {
+    // Clear user token and reset states to log out
+    localStorage.removeItem("userToken");
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    setShowSuccess(false); // Clear login success message
+  };
+
   return (
     <div className="loginContainer">
-      {isLoggedIn ? (
+      {showSuccess ? (
+        <div className="loginSuccessMessage">Login Successful</div>
+      ) : isLoggedIn ? (
         <div>
           <p>Welcome, {currentUser}!</p>
           <button className="logoutBtn" onClick={handleLogout}>
