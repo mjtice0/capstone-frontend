@@ -14,16 +14,22 @@ function getReviews(placeId) {
     });
 }
 
-function addReview(placeId, reviewData) {
-  console.log("DataManager.addReview()", { placeId, reviewData });
+function addReview(placeId, reviewData, headers) {
+  console.log("Headers:", headers);
   return axios
-    .post(`http://localhost:8800/api/reviews/${placeId}`, {
-      name: reviewData.name,
-      title: reviewData.title,
-      description: reviewData.description,
-      rating: reviewData.rating,
-      features: reviewData.features,
-    })
+    .post(
+      `http://localhost:8800/api/reviews/${placeId}`,
+      {
+        name: reviewData.name,
+        title: reviewData.title,
+        description: reviewData.description,
+        rating: reviewData.rating,
+        features: reviewData.features,
+      },
+      {
+        headers,
+      }
+    )
     .then((response) => {
       console.log(response.data);
       const reviews = response.data;
@@ -36,21 +42,20 @@ function addReview(placeId, reviewData) {
     });
 }
 
-function deleteReview(placeId) {
-  return axios
-    .delete(`http://localhost:8800/api/reviews/${placeId}`)
-    .then((response) => {
-      const reviews = response.data;
-      console.log("getReviews()", { reviews });
-      return reviews;
-    })
-    .catch((error) => {
-      console.error(error);
-      throw error;
-    });
-}
+// function deleteReview(placeId) {
+//   return axios
+//     .delete(`http://localhost:8800/api/reviews/${placeId}`)
+//     .then((response) => {
+//       const reviews = response.data;
+//       console.log("getReviews()", { reviews });
+//       return reviews;
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//       throw error;
+//     });
+// }
 export default {
-  deleteReview,
   getReviews,
   addReview,
 };
