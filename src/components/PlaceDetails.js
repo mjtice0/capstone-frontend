@@ -27,7 +27,9 @@ function Reviews({ reviews, place }) {
   );
 }
 
-export default function PlaceDetails({ place }) {
+export default function PlaceDetails({ place, userId }) {
+  console.log("PlaceDetails Component - userId:", userId);
+
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -63,6 +65,7 @@ export default function PlaceDetails({ place }) {
         <AddReviewForm
           placeId={place?.placeId}
           updateReviewList={updateReviewList}
+          userId={userId}
         />
       </div>
     </div>

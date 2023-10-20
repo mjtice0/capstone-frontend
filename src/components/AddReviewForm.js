@@ -3,7 +3,7 @@ import "./Map.css";
 import { features } from "../data/features";
 import DataManager from "../data/DataManager";
 
-const AddReviewForm = ({ placeId, updateReviewList, isLoggedIn }) => {
+const AddReviewForm = ({ placeId, updateReviewList, isLoggedIn, userId }) => {
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewName, setReviewName] = useState("");
   const [reviewDescription, setReviewDescription] = useState("");
@@ -11,6 +11,11 @@ const AddReviewForm = ({ placeId, updateReviewList, isLoggedIn }) => {
   const [reviewFeatures, setReviewFeatures] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
   const [isReviewActive, setIsReviewActive] = useState(false);
+
+  const onChangeFeature = (event) => {
+    const features = new FormData(event.target.form).getAll("feature");
+    setReviewFeatures(features);
+  };
 
   const handleName = (event) => {
     setReviewName(event.target.value);
@@ -25,21 +30,23 @@ const AddReviewForm = ({ placeId, updateReviewList, isLoggedIn }) => {
   };
 
   const handleFormSubmit = (event) => {
+    console.log("form submitted");
     event.preventDefault();
 
     const newReview = {
       placeId,
+      userId: userId,
       name: reviewName,
       title: reviewTitle,
       description: reviewDescription,
       rating: reviewRating,
-      features: reviewFeatures,
+      features: reviewFeatures.sort().join(", "),
     };
+    console.log("Request payload:", newReview);
 
     DataManager.addReview(placeId, newReview)
       .then(() => {
         updateReviewList();
-        // Clear form fields after a successful submission
         setReviewName("");
         setReviewTitle("");
         setReviewDescription("");
@@ -109,15 +116,7 @@ const AddReviewForm = ({ placeId, updateReviewList, isLoggedIn }) => {
                       name="feature"
                       value={value}
                       checked={reviewFeatures.includes(value)}
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          setReviewFeatures([...reviewFeatures, value]);
-                        } else {
-                          setReviewFeatures(
-                            reviewFeatures.filter((f) => f !== value)
-                          );
-                        }
-                      }}
+                      onChange={onChangeFeature}
                     />
                     {value}
                   </label>

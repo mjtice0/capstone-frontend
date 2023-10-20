@@ -14,12 +14,19 @@ function getReviews(placeId) {
     });
 }
 
-function addReview(placeId, reviewData, headers) {
-  console.log("Headers:", headers);
+function addReview(placeId, reviewData, userId) {
+  const authToken = localStorage.getItem("authToken");
+  console.log("AuthToken:", authToken);
+  const headers = {
+    "auth-token": `Bearer ${authToken}`,
+  };
+  console.log("Request Headers:", headers);
   return axios
     .post(
       `http://localhost:8800/api/reviews/${placeId}`,
       {
+        placeId: placeId,
+        userId: userId,
         name: reviewData.name,
         title: reviewData.title,
         description: reviewData.description,
@@ -27,7 +34,7 @@ function addReview(placeId, reviewData, headers) {
         features: reviewData.features,
       },
       {
-        headers,
+        headers: headers,
       }
     )
     .then((response) => {

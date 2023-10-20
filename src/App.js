@@ -10,8 +10,11 @@ import Register from "./pages/Register";
 function App() {
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
+  const [userId, setUserId] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  console.log("App Component - userId:", userId);
 
   function onMarkerClick(data) {
     const place = data.place;
@@ -45,6 +48,7 @@ function App() {
               setShowLogin={setShowLogin}
               setCurrentUser={setCurrentUser}
               setIsLoggedIn={setIsLoggedIn}
+              setUserId={setUserId}
             />
           }
         />
@@ -60,7 +64,9 @@ function Home({
   setShowLogin,
   setIsLoggedIn,
   currentUser,
+  userId,
 }) {
+  console.log("Home Component - userId:", userId);
   return (
     <div className="all-rows">
       <div className="first-row">
@@ -72,6 +78,7 @@ function Home({
           setShowLogin={setShowLogin}
           setIsLoggedIn={setIsLoggedIn}
           currentUser={currentUser}
+          userId={userId}
         />
       </div>
     </div>
